@@ -67,12 +67,14 @@ const App = () => (
       </Box>
       <Box
         margin="s"
-        padding="l"
+        paddingLeft="m"
+        paddingTop="s"
         borderRadius="xl"
         borderWidth={3}
         borderColor="purpleLight"
         backgroundColor="orange"
         flex={1}
+        height={100}
       >
         <Text variant="subHeader" style={[rootStyles.eventContainer]}>
           <Text style={[rootStyles.eventDetails]}>1</Text> event today
