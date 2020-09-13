@@ -1,27 +1,3 @@
-{
-	"root": true,
-	"extends": [
-		"@zilahir/eslint-config/base-typescript",
-		"plugin:unicorn/recommended"
-	],
-	"rules": {
-    "unicorn/filename-case": [
-      "error",
-      {
-        "case": "camelCase"
-      }
-    ],
-    "unicorn/consistent-function-scoping": 0,
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "mjs": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-    ]
-  }
+{ 
+  "extends": "react-native-wcandillon"
 }
