@@ -13,7 +13,7 @@ const rootStyles = StyleSheet.create({
     width,
     height,
     backgroundColor: colors.mainAppColor,
-    flexDirection: "row",
+    display: "flex",
   },
   weatherIconContainer: {
     position: "relative",
@@ -32,17 +32,24 @@ const rootStyles = StyleSheet.create({
   event: {
     marginTop: 10,
     marginLeft: 55,
-  }
+  },
 });
 
 const App = () => (
-  <View style={rootStyles.rootContainer}>
-    <Box flex={1} alignContent="center" justifyContent="center" margin="s">
+  <View style={[rootStyles.rootContainer]}>
+    <Box
+      flexDirection="row"
+      alignContent="center"
+      justifyContent="center"
+      margin="s"
+    >
       <Box
         padding="l"
         borderRadius="xl"
         borderWidth={3}
         borderColor="purpleLight"
+        flex={1}
+        margin="s"
       >
         <Text variant="header" marginBottom="s">
           Welcome Home
@@ -59,14 +66,16 @@ const App = () => (
         </Text>
       </Box>
       <Box
+        margin="s"
         padding="l"
         borderRadius="xl"
         borderWidth={3}
         borderColor="purpleLight"
         backgroundColor="orange"
+        flex={1}
       >
         <Text variant="subHeader" style={[rootStyles.eventContainer]}>
-            <Text style={[rootStyles.eventDetails]}>1</Text> event today
+          <Text style={[rootStyles.eventDetails]}>1</Text> event today
         </Text>
         <Text style={[rootStyles.event]} variant="body">
           at 16:30 – Oskari coming
