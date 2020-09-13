@@ -18,6 +18,20 @@ const rootStyles = StyleSheet.create({
   weatherIconContainer: {
     position: "relative",
     top: -8,
+  },
+  eventDetails: {
+    backgroundColor: colors.mainAppColor,
+    borderRadius: 100,
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    marginRight: 10,
+  },
+  eventContainer: {
+    alignItems: "center",
+  },
+  event: {
+    marginTop: 10,
+    marginLeft: 55,
   }
 });
 
@@ -42,6 +56,20 @@ const App = () => (
             <WiSnow size={36} color="#ffffff" />
           </View>
           and -19°c outside.
+        </Text>
+      </Box>
+      <Box
+        padding="l"
+        borderRadius="xl"
+        borderWidth={3}
+        borderColor="purpleLight"
+        backgroundColor="orange"
+      >
+        <Text variant="subHeader" style={[rootStyles.eventContainer]}>
+            <Text style={[rootStyles.eventDetails]}>1</Text> event today
+        </Text>
+        <Text style={[rootStyles.event]} variant="body">
+          at 16:30 – Oskari coming
         </Text>
       </Box>
     </Box>

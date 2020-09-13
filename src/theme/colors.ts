@@ -5,6 +5,7 @@ export const colors = {
   mainAppColor: hexToRgba("#121220", 1),
   purleLight: hexToRgba("#26243F", 1),
   white: hexToRgba("#ffffff", 1),
+  orange: hexToRgba("#F55945", 1),
 };
 
 const theme = {
@@ -19,11 +20,16 @@ const theme = {
       fontSize: 20,
       color: "white",
     },
+    body: {
+      fontSize: 16,
+      color: "white",
+    },
   },
   colors: {
     mainAppColor: colors.mainAppColor,
     purpleLight: colors.purleLight,
     white: "white",
+    orange: colors.orange,
   },
   spacing: {
     s: 10,
