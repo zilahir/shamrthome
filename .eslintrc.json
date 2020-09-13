@@ -1,6 +1,7 @@
 {
 	"root": true,
 	"extends": [
-		"@zialhir/eslint-config/base-typescript"
+		"@zilahir/eslint-config/base-typescript",
+		"plugin:unicorn/recommended"
 	]
 }
