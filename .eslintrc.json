@@ -1,0 +1,6 @@
+{
+	"root": true,
+	"extends": [
+		"@zialhir/eslint-config/base-typescript"
+	]
+}

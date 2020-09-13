@@ -12,6 +12,7 @@
     "@types/node": "^12.12.58",
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
+    "@zilahir/eslint-config": "^3.0.0",
     "hex-to-rgba": "^2.0.1",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
@@ -23,7 +24,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint:ts": "eslint --ext .ts --fix ."
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,5 +41,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.1.0",
+    "@typescript-eslint/parser": "^4.1.0"
   }
 }
