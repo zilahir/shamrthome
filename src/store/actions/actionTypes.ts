@@ -9,4 +9,8 @@ interface TestAction {
   payload: Test;
 }
 
+export interface TestState {
+  test: string;
+}
+
 export type TestActionTypes = TestAction;

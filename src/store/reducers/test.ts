@@ -1,10 +1,10 @@
-import { TEST } from "./actionTypes";
+import { TEST, TestActionTypes, TestState } from "../actions/actionTypes";
 
-const initialState = {
+const initialState: TestState = {
   test: "",
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: TestActionTypes): TestState => {
   switch (action.type) {
     case TEST:
       return {
