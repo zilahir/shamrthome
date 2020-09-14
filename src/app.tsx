@@ -89,7 +89,7 @@ const App = () => {
             Welcome Home
           </Text>
           <Text variant="subHeader" marginBottom="s" marginTop="s">
-            {format(new Date(), "'Today is a' iiii")}
+            {format(new Date(), "'Today is' iiii")}
           </Text>
           <Text variant="subHeader">
             It's currently snowing,
