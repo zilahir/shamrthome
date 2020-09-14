@@ -11,6 +11,7 @@ import TrendingFlatIcon from "@material-ui/icons/TrendingFlat";
 import { Box, colors, Text } from "./theme/colors";
 import { eventsApi } from "./fakeApi/events";
 import { getLeavingTrains, TimeTable } from "./api/trains";
+import { getHungarianNews, IndexNews } from "./api/news";
 
 const { width, height } = Dimensions.get("window");
 
@@ -63,10 +64,13 @@ const rootStyles = StyleSheet.create({
 
 const App = () => {
   const [trains, setTrains] = useState<Array<TimeTable>>([]);
+  const [hungarianNews, setHungarianNews] = useState<Array<IndexNews>>([]);
   useEffect(() => {
     getLeavingTrains().then((result: TimeTable[]) => {
       setTrains(result);
-      console.debug("result", result);
+    });
+    getHungarianNews().then((result: IndexNews[]) => {
+      setHungarianNews(result);
     });
   }, []);
   return (
@@ -98,6 +102,36 @@ const App = () => {
             </View>
             and -19°c outside.
           </Text>
+        </Box>
+        <Box flexDirection="row">
+          <Box
+            margin="s"
+            borderRadius="l"
+            backgroundColor="orange"
+            justifyContent="center"
+            padding="m"
+          >
+            <Text style={{ marginBottom: 10 }} variant="subHeader">
+              Index
+            </Text>
+            {hungarianNews.map((currentNews: IndexNews) => (
+              <Text>{currentNews.title}</Text>
+            ))}
+          </Box>
+          <Box
+            margin="s"
+            borderRadius="l"
+            backgroundColor="orange"
+            justifyContent="center"
+            padding="m"
+          >
+            <Text style={{ marginBottom: 10 }} variant="subHeader">
+              Yle
+            </Text>
+            {hungarianNews.map((currentNews: IndexNews) => (
+              <Text>{currentNews.title}</Text>
+            ))}
+          </Box>
         </Box>
       </Box>
       <Box
