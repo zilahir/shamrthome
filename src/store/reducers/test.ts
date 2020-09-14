@@ -9,7 +9,7 @@ const reducer = (state = initialState, action: TestActionTypes): TestState => {
     case TEST:
       return {
         ...state,
-        test: "action.payload.test",
+        test: action.payload.test,
       };
     default:
       return state;
