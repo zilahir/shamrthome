@@ -5,9 +5,14 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import test from "./reducers/test";
+import { Test } from "./actions/actionTypes";
+
+type RootState = {
+  test: Test;
+};
 
 const persistConfig = {
-  key: "root",
+  key: "smarthome",
   storage,
 };
 
@@ -15,12 +20,11 @@ const rootReducer = combineReducers({
   test,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer<RootState>(persistConfig, rootReducer);
 
 const middleWareList = [];
 if (process.env.NODE_ENV === "development") {
-  middleWareList.push(logger);
-  middleWareList.push(thunk);
+  middleWareList.push(logger, thunk);
 }
 const composeEnhancers =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
