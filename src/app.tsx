@@ -2,9 +2,11 @@ import React from "react";
 import { View, Dimensions, StyleSheet } from "react-native";
 import { format } from "date-fns";
 import { WiSnow } from "weather-icons-react";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
 // import { useDispatch } from "react-redux";
 
 import { Box, colors, Text } from "./theme/colors";
+import { eventsApi } from "./fakeApi/events";
 
 const { width, height } = Dimensions.get("window");
 
@@ -21,24 +23,26 @@ const rootStyles = StyleSheet.create({
     position: "relative",
     top: -8,
   },
-  eventDetails: {
-    backgroundColor: colors.mainAppColor,
-    borderRadius: 100,
-    paddingVertical: 8,
-    paddingHorizontal: 15,
-  },
   eventContainer: {
     paddingHorizontal: 20,
   },
-  center: {
+  leftContainer: {
+    width: width * 0.7,
+  },
+  rightContainer: {
+    flex: 1,
+  },
+  oneEvent: {
+    padding: 10,
+    marginVertical: 5,
+    backgroundColor: colors.mainAppColor,
+    borderRadius: 5,
     alignItems: "center",
   },
-  eventTitle: {
-    marginRight: 10,
-  },
-  eventList: {
-    marginLeft: 5,
-    marginTop: 10,
+  eventDate: {
+    opacity: 0.7,
+    display: "flex",
+    alignItems: "center",
   },
 });
 
@@ -50,11 +54,11 @@ const App = () => {
         alignContent="center"
         justifyContent="flex-start"
         margin="s"
-        flex={1}
+        style={[rootStyles.leftContainer]}
       >
         <Box
           padding="l"
-          borderRadius="xl"
+          borderRadius="l"
           borderWidth={3}
           borderColor="purpleLight"
           margin="s"
@@ -79,11 +83,11 @@ const App = () => {
         alignContent="center"
         justifyContent="flex-start"
         margin="s"
-        flex={1}
+        style={[rootStyles.rightContainer]}
       >
         <Box
           margin="s"
-          borderRadius="xl"
+          borderRadius="l"
           borderWidth={3}
           borderColor="purpleLight"
           backgroundColor="orange"
@@ -91,18 +95,21 @@ const App = () => {
           padding="m"
           style={[rootStyles.eventContainer]}
         >
-          <Text
-            style={[rootStyles.center, { paddingBottom: 10 }]}
-            variant="subHeader"
-          >
-            <Text style={[rootStyles.eventDetails, rootStyles.eventTitle]}>
-              1
-            </Text>{" "}
-            event today
+          <Text style={{ marginBottom: 10 }} variant="header">
+            Events
           </Text>
-          <Text style={[rootStyles.eventList]} variant="body">
-            at 16:30 – Oskari coming
-          </Text>
+          {eventsApi.getAllEvents().map((currentEvent) => (
+            <Box>
+              <Text style={[rootStyles.oneEvent]} variant="body">
+                {currentEvent.title}
+                <Text style={[rootStyles.eventDate]}>
+                  <View style={{ marginHorizontal: 10, }}>
+                    <AccessTimeIcon />
+                  </View> {currentEvent.time}
+                  </Text>
+              </Text>
+            </Box>
+          ))}
         </Box>
       </Box>
     </View>

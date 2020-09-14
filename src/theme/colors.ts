@@ -6,6 +6,7 @@ export const colors = {
   purleLight: hexToRgba("#26243F", 1),
   white: hexToRgba("#ffffff", 1),
   orange: hexToRgba("#F55945", 1),
+  orangeLight: hexToRgba("#F55945", 0.7),
 };
 
 const theme = {
@@ -30,6 +31,7 @@ const theme = {
     purpleLight: colors.purleLight,
     white: "white",
     orange: colors.orange,
+    orangeLight: colors.orangeLight,
   },
   spacing: {
     s: 10,
