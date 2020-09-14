@@ -11,7 +11,7 @@ import TrendingFlatIcon from "@material-ui/icons/TrendingFlat";
 import { Box, colors, Text } from "./theme/colors";
 import { eventsApi } from "./fakeApi/events";
 import { getLeavingTrains, TimeTable } from "./api/trains";
-import { getHungarianNews, IndexNews } from "./api/news";
+import { getFinnishNews, getHungarianNews, News } from "./api/news";
 
 const { width, height } = Dimensions.get("window");
 
@@ -75,13 +75,17 @@ const rootStyles = StyleSheet.create({
 
 const App = () => {
   const [trains, setTrains] = useState<Array<TimeTable>>([]);
-  const [hungarianNews, setHungarianNews] = useState<Array<IndexNews>>([]);
+  const [hungarianNews, setHungarianNews] = useState<Array<News>>([]);
+  const [finnishNews, setFinnishNews] = useState<Array<News>>([]);
   useEffect(() => {
     getLeavingTrains().then((result: TimeTable[]) => {
       setTrains(result);
     });
-    getHungarianNews().then((result: IndexNews[]) => {
+    getHungarianNews().then((result: News[]) => {
       setHungarianNews(result);
+    });
+    getFinnishNews().then((result: News[]) => {
+      setFinnishNews(result);
     });
   }, []);
   return (
@@ -121,10 +125,10 @@ const App = () => {
             backgroundColor="purpleLight"
             justifyContent="center"
             padding="m"
-            flex={1}
+            width={400}
           >
-            <Text style={[rootStyles.newsHeader]}>Index</Text>
-            {hungarianNews.map((currentNews: IndexNews) => (
+            <Text style={[rootStyles.newsHeader]}>🇭🇺 Index</Text>
+            {hungarianNews.map((currentNews: News) => (
               <Text style={[rootStyles.oneNews]}>{currentNews.title}</Text>
             ))}
           </Box>
@@ -136,10 +140,8 @@ const App = () => {
             padding="m"
             flex={1}
           >
-            <Text style={[rootStyles.newsHeader]} variant="subHeader">
-              Yle
-            </Text>
-            {hungarianNews.map((currentNews: IndexNews) => (
+            <Text style={[rootStyles.newsHeader]}>🇫🇮 Iltalehti</Text>
+            {finnishNews.map((currentNews: News) => (
               <Text style={[rootStyles.oneNews]}>{currentNews.title}</Text>
             ))}
           </Box>
