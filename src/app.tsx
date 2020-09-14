@@ -88,25 +88,24 @@ const App = () => {
         <Box
           margin="s"
           borderRadius="l"
-          borderWidth={3}
-          borderColor="purpleLight"
           backgroundColor="orange"
           justifyContent="center"
           padding="m"
           style={[rootStyles.eventContainer]}
         >
           <Text style={{ marginBottom: 10 }} variant="header">
-            Events
+            Upcoming events
           </Text>
           {eventsApi.getAllEvents().map((currentEvent) => (
-            <Box>
+            <Box key={currentEvent.id}>
               <Text style={[rootStyles.oneEvent]} variant="body">
                 {currentEvent.title}
                 <Text style={[rootStyles.eventDate]}>
-                  <View style={{ marginHorizontal: 10, }}>
+                  <View style={{ marginHorizontal: 10 }}>
                     <AccessTimeIcon />
-                  </View> {currentEvent.time}
-                  </Text>
+                  </View>{" "}
+                  {currentEvent.time}
+                </Text>
               </Text>
             </Box>
           ))}
