@@ -15,6 +15,7 @@ const rootStyles = StyleSheet.create({
     height,
     backgroundColor: colors.mainAppColor,
     display: "flex",
+    flexDirection: "row",
   },
   weatherIconContainer: {
     position: "relative",
@@ -25,14 +26,19 @@ const rootStyles = StyleSheet.create({
     borderRadius: 100,
     paddingVertical: 8,
     paddingHorizontal: 15,
-    marginRight: 10,
   },
   eventContainer: {
+    paddingHorizontal: 20,
+  },
+  center: {
     alignItems: "center",
   },
-  event: {
+  eventTitle: {
+    marginRight: 10,
+  },
+  eventList: {
+    marginLeft: 5,
     marginTop: 10,
-    marginLeft: 55,
   },
 });
 
@@ -40,17 +46,17 @@ const App = () => {
   return (
     <View style={[rootStyles.rootContainer]}>
       <Box
-        flexDirection="row"
+        flexDirection="column"
         alignContent="center"
-        justifyContent="center"
+        justifyContent="flex-start"
         margin="s"
+        flex={1}
       >
         <Box
           padding="l"
           borderRadius="xl"
           borderWidth={3}
           borderColor="purpleLight"
-          flex={1}
           margin="s"
         >
           <Text variant="header" marginBottom="s">
@@ -67,21 +73,34 @@ const App = () => {
             and -19°c outside.
           </Text>
         </Box>
+      </Box>
+      <Box
+        flexDirection="column"
+        alignContent="center"
+        justifyContent="flex-start"
+        margin="s"
+        flex={1}
+      >
         <Box
           margin="s"
-          paddingLeft="m"
-          paddingTop="s"
           borderRadius="xl"
           borderWidth={3}
           borderColor="purpleLight"
           backgroundColor="orange"
-          flex={1}
-          height={100}
+          justifyContent="center"
+          padding="m"
+          style={[rootStyles.eventContainer]}
         >
-          <Text variant="subHeader" style={[rootStyles.eventContainer]}>
-            <Text style={[rootStyles.eventDetails]}>1</Text> event today
+          <Text
+            style={[rootStyles.center, { paddingBottom: 10 }]}
+            variant="subHeader"
+          >
+            <Text style={[rootStyles.eventDetails, rootStyles.eventTitle]}>
+              1
+            </Text>{" "}
+            event today
           </Text>
-          <Text style={[rootStyles.event]} variant="body">
+          <Text style={[rootStyles.eventList]} variant="body">
             at 16:30 – Oskari coming
           </Text>
         </Box>
