@@ -51,7 +51,6 @@ const App = () => {
   useEffect(() => {
     getLeavingTrains().then((result) => {
       console.debug("result", result);
-      console.debug('date', new Date())
     });
   }, []);
   return (
