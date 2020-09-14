@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Dimensions, StyleSheet } from "react-native";
 import { format } from "date-fns";
 import { WiSnow } from "weather-icons-react";
@@ -7,6 +7,7 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 
 import { Box, colors, Text } from "./theme/colors";
 import { eventsApi } from "./fakeApi/events";
+import { getLeavingTrains } from "./api/trains";
 
 const { width, height } = Dimensions.get("window");
 
@@ -47,6 +48,12 @@ const rootStyles = StyleSheet.create({
 });
 
 const App = () => {
+  useEffect(() => {
+    getLeavingTrains().then((result) => {
+      console.debug("result", result);
+      console.debug('date', new Date())
+    });
+  }, []);
   return (
     <View style={[rootStyles.rootContainer]}>
       <Box
@@ -109,6 +116,18 @@ const App = () => {
               </Text>
             </Box>
           ))}
+        </Box>
+        <Box
+          margin="s"
+          borderRadius="l"
+          backgroundColor="mainAppColor"
+          borderColor="purpleLight"
+          borderWidth={3}
+          padding="l"
+        >
+          <Text style={{ marginBottom: 10 }} variant="header">
+            Trains leaving
+          </Text>
         </Box>
       </Box>
     </View>
