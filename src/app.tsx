@@ -2,6 +2,7 @@ import React from "react";
 import { View, Dimensions, StyleSheet } from "react-native";
 import { format } from "date-fns";
 import { WiSnow } from "weather-icons-react";
+// import { useDispatch } from "react-redux";
 
 import { Box, colors, Text } from "./theme/colors";
 
@@ -35,56 +36,58 @@ const rootStyles = StyleSheet.create({
   },
 });
 
-const App = () => (
-  <View style={[rootStyles.rootContainer]}>
-    <Box
-      flexDirection="row"
-      alignContent="center"
-      justifyContent="center"
-      margin="s"
-    >
+const App = () => {
+  return (
+    <View style={[rootStyles.rootContainer]}>
       <Box
-        padding="l"
-        borderRadius="xl"
-        borderWidth={3}
-        borderColor="purpleLight"
-        flex={1}
+        flexDirection="row"
+        alignContent="center"
+        justifyContent="center"
         margin="s"
       >
-        <Text variant="header" marginBottom="s">
-          Welcome Home
-        </Text>
-        <Text variant="subHeader" marginBottom="s" marginTop="s">
-          {format(new Date(), "'Today is a' iiii")}
-        </Text>
-        <Text variant="subHeader">
-          It's currently snowing,
-          <View style={[rootStyles.weatherIconContainer]}>
-            <WiSnow size={36} color="#ffffff" />
-          </View>
-          and -19°c outside.
-        </Text>
+        <Box
+          padding="l"
+          borderRadius="xl"
+          borderWidth={3}
+          borderColor="purpleLight"
+          flex={1}
+          margin="s"
+        >
+          <Text variant="header" marginBottom="s">
+            Welcome Home
+          </Text>
+          <Text variant="subHeader" marginBottom="s" marginTop="s">
+            {format(new Date(), "'Today is a' iiii")}
+          </Text>
+          <Text variant="subHeader">
+            It's currently snowing,
+            <View style={[rootStyles.weatherIconContainer]}>
+              <WiSnow size={36} color="#ffffff" />
+            </View>
+            and -19°c outside.
+          </Text>
+        </Box>
+        <Box
+          margin="s"
+          paddingLeft="m"
+          paddingTop="s"
+          borderRadius="xl"
+          borderWidth={3}
+          borderColor="purpleLight"
+          backgroundColor="orange"
+          flex={1}
+          height={100}
+        >
+          <Text variant="subHeader" style={[rootStyles.eventContainer]}>
+            <Text style={[rootStyles.eventDetails]}>1</Text> event today
+          </Text>
+          <Text style={[rootStyles.event]} variant="body">
+            at 16:30 – Oskari coming
+          </Text>
+        </Box>
       </Box>
-      <Box
-        margin="s"
-        paddingLeft="m"
-        paddingTop="s"
-        borderRadius="xl"
-        borderWidth={3}
-        borderColor="purpleLight"
-        backgroundColor="orange"
-        flex={1}
-        height={100}
-      >
-        <Text variant="subHeader" style={[rootStyles.eventContainer]}>
-          <Text style={[rootStyles.eventDetails]}>1</Text> event today
-        </Text>
-        <Text style={[rootStyles.event]} variant="body">
-          at 16:30 – Oskari coming
-        </Text>
-      </Box>
-    </Box>
-  </View>
-);
+    </View>
+  );
+};
 
 export default App;
