@@ -3,6 +3,7 @@ import { View, Dimensions, StyleSheet } from "react-native";
 import { format } from "date-fns";
 import { WiSnow } from "weather-icons-react";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import TrainIcon from "@material-ui/icons/Train";
 // import { useDispatch } from "react-redux";
 
 import { Box, colors, Text } from "./theme/colors";
@@ -45,6 +46,9 @@ const rootStyles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
   },
+  center: {
+    alignItems: "center",
+  }
 });
 
 const App = () => {
@@ -124,8 +128,8 @@ const App = () => {
           borderWidth={3}
           padding="l"
         >
-          <Text style={{ marginBottom: 10 }} variant="header">
-            Trains leaving
+          <Text style={[rootStyles.center, { marginBottom: 10 }]} variant="header">
+            <TrainIcon fontSize="large" /> Trains leaving
           </Text>
         </Box>
       </Box>
