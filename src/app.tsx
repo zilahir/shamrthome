@@ -12,14 +12,14 @@ import { Box, colors, Text } from "./theme/colors";
 import { eventsApi } from "./fakeApi/events";
 import { getLeavingTrains, TimeTable } from "./api/trains";
 import { getFinnishNews, getHungarianNews, News } from "./api/news";
+import Temperature from "./components/Temperature";
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 const rootStyles = StyleSheet.create({
   rootContainer: {
     padding: 20,
     width,
-    height,
     backgroundColor: colors.mainAppColor,
     display: "flex",
     flexDirection: "row",
@@ -146,6 +146,7 @@ const App = () => {
             ))}
           </Box>
         </Box>
+        <Temperature />
       </Box>
       <Box
         flexDirection="column"

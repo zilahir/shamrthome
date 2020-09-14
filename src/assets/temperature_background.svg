@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="319.649" height="314.286" viewBox="0 0 319.649 314.286">
+  <g id="Group_14" data-name="Group 14" transform="translate(0 0)">
+    <g id="Oval" transform="translate(7.183 6.781)" fill="none" stroke="#dadada" stroke-miterlimit="10" stroke-width="11.577" stroke-dasharray="1.017 20.733" opacity="0.804">
+      <ellipse cx="152.734" cy="150.544" rx="152.734" ry="150.544" stroke="none"/>
+      <ellipse cx="152.734" cy="150.544" rx="146.945" ry="144.755" fill="none"/>
+    </g>
+    <path id="Path_3" data-name="Path 3" d="M0,.5H19.944" transform="translate(299.705 156.122)" fill="none" stroke="#eaeaea" stroke-miterlimit="10" stroke-width="1.43"/>
+    <path id="Path_3_Copy" data-name="Path 3 Copy" d="M0,.5H19.944" transform="translate(0 157.358)" fill="none" stroke="#eaeaea" stroke-miterlimit="10" stroke-width="1.43"/>
+    <path id="Path_3_Copy-2" data-name="Path 3 Copy" d="M0,0H20.049" transform="translate(159.244 0) rotate(90)" fill="none" stroke="#eaeaea" stroke-miterlimit="10" stroke-width="1.43"/>
+    <path id="Path_3_Copy_2" data-name="Path 3 Copy 2" d="M0,0H20.049" transform="translate(160.676 294.237) rotate(90)" fill="none" stroke="#eaeaea" stroke-miterlimit="10" stroke-width="1.43"/>
+  </g>
+</svg>
