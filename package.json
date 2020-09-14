@@ -17,8 +17,12 @@
     "@zilahir/eslint-config": "^3.0.0",
     "axios": "^0.20.0",
     "date-fns": "^2.16.1",
+    "date-fns-timezone": "^0.1.4",
+    "date-fns-tz": "^1.0.10",
     "frisbee": "^3.1.4",
     "hex-to-rgba": "^2.0.1",
+    "lodash": "^4.17.20",
+    "moment": "^2.28.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -56,6 +60,7 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.161",
     "@types/react-redux": "^7.1.9",
     "@types/redux-logger": "^3.0.8",
     "@types/shortid": "0.0.29",

@@ -1,5 +1,5 @@
 import axios from "axios";
-import format from "date-fns/format";
+import { flatten } from "lodash";
 
 export interface TimeTable {
   cancelled: boolean;
@@ -7,7 +7,7 @@ export interface TimeTable {
   commercialTrack: string;
   countryCode: "FI";
   scheduledTime: string;
-  stationShortCode: "string";
+  stationShortCode: "LPV" | string;
   stationUICCode: number;
   trainStopping: boolean;
   type: string;
@@ -16,20 +16,15 @@ export interface TimeTable {
 export const getLeavingTrains = (): Promise<TimeTable[]> =>
   new Promise((resolve) => {
     axios
-      .get(
-        `https://rata.digitraffic.fi/api/v1/live-trains/station/LPV/HKI?startDate=${format(
-          new Date(),
-          "yyyy-MM-dd'T'HH:mm:ss"
-        )}.000Z`
-      )
+      .get("https://rata.digitraffic.fi/api/v1/live-trains/station/LPV/HKI")
       .then((result) => {
         const filtered = result.data.map((thisTrain: any): TimeTable[] =>
           thisTrain.timeTableRows.filter(
-            (thisTimeTable: any) =>
+            (thisTimeTable: TimeTable) =>
               thisTimeTable.stationShortCode === "LPV" &&
               thisTimeTable.type === "DEPARTURE"
           )
         );
-        resolve(filtered.slice(0, 5));
+        resolve(flatten(filtered.slice(0, 5)));
       });
   });

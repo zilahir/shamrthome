@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Dimensions, StyleSheet } from "react-native";
-import { format } from "date-fns";
 import { WiSnow } from "weather-icons-react";
+import { format } from "date-fns";
+import moment from "moment";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import TrainIcon from "@material-ui/icons/Train";
+import TrendingFlatIcon from "@material-ui/icons/TrendingFlat";
 // import { useDispatch } from "react-redux";
 
 import { Box, colors, Text } from "./theme/colors";
 import { eventsApi } from "./fakeApi/events";
-import { getLeavingTrains } from "./api/trains";
+import { getLeavingTrains, TimeTable } from "./api/trains";
 
 const { width, height } = Dimensions.get("window");
 
@@ -41,6 +43,14 @@ const rootStyles = StyleSheet.create({
     borderRadius: 5,
     alignItems: "center",
   },
+  oneTrain: {
+    padding: 10,
+    marginVertical: 5,
+    borderRadius: 5,
+    alignItems: "center",
+    borderWidth: 2,
+    borderColor: colors.orange,
+  },
   eventDate: {
     opacity: 0.7,
     display: "flex",
@@ -48,12 +58,14 @@ const rootStyles = StyleSheet.create({
   },
   center: {
     alignItems: "center",
-  }
+  },
 });
 
 const App = () => {
+  const [trains, setTrains] = useState<Array<TimeTable>>([]);
   useEffect(() => {
-    getLeavingTrains().then((result) => {
+    getLeavingTrains().then((result: TimeTable[]) => {
+      setTrains(result);
       console.debug("result", result);
     });
   }, []);
@@ -126,11 +138,38 @@ const App = () => {
           backgroundColor="mainAppColor"
           borderColor="purpleLight"
           borderWidth={3}
-          padding="l"
+          padding="m"
         >
-          <Text style={[rootStyles.center, { marginBottom: 10 }]} variant="header">
+          <Text
+            style={[rootStyles.center, { marginBottom: 10 }]}
+            variant="header"
+          >
             <TrainIcon fontSize="large" /> Trains leaving
           </Text>
+          <Box>
+            {trains.map((currentTrain) => (
+              <Box style={{ marginBottom: 5 }} key={currentTrain.scheduledTime}>
+                <Text variant="body" style={rootStyles.oneTrain}>
+                  {moment(
+                    moment
+                      .utc(currentTrain.scheduledTime)
+                      .local()
+                      .format("YYYY-MM-DD HH:mm:ss")
+                  ).fromNow()}
+                  <View
+                    style={[
+                      rootStyles.center,
+                      { marginHorizontal: 10, flexDirection: "row" },
+                    ]}
+                  >
+                    <Text style={[rootStyles.center, { opacity: 0.3 }]}>
+                      <TrendingFlatIcon /> Helsinki
+                    </Text>
+                  </View>
+                </Text>
+              </Box>
+            ))}
+          </Box>
         </Box>
       </Box>
     </View>
