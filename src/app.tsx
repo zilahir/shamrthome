@@ -60,6 +60,17 @@ const rootStyles = StyleSheet.create({
   center: {
     alignItems: "center",
   },
+  oneNews: {
+    marginVertical: 5,
+    fontSize: 18,
+    color: "#ffffff",
+    lineHeight: 25,
+  },
+  newsHeader: {
+    marginBottom: 10,
+    fontSize: 24,
+    color: "#ffffff",
+  },
 });
 
 const App = () => {
@@ -107,29 +118,29 @@ const App = () => {
           <Box
             margin="s"
             borderRadius="l"
-            backgroundColor="orange"
+            backgroundColor="purpleLight"
             justifyContent="center"
             padding="m"
+            flex={1}
           >
-            <Text style={{ marginBottom: 10 }} variant="subHeader">
-              Index
-            </Text>
+            <Text style={[rootStyles.newsHeader]}>Index</Text>
             {hungarianNews.map((currentNews: IndexNews) => (
-              <Text>{currentNews.title}</Text>
+              <Text style={[rootStyles.oneNews]}>{currentNews.title}</Text>
             ))}
           </Box>
           <Box
             margin="s"
             borderRadius="l"
-            backgroundColor="orange"
+            backgroundColor="purpleLight"
             justifyContent="center"
             padding="m"
+            flex={1}
           >
-            <Text style={{ marginBottom: 10 }} variant="subHeader">
+            <Text style={[rootStyles.newsHeader]} variant="subHeader">
               Yle
             </Text>
             {hungarianNews.map((currentNews: IndexNews) => (
-              <Text>{currentNews.title}</Text>
+              <Text style={[rootStyles.oneNews]}>{currentNews.title}</Text>
             ))}
           </Box>
         </Box>
