@@ -22,6 +22,17 @@ const temperatureStyle = StyleSheet.create({
   rootContainer: {
     position: "relative",
   },
+  celsiusContainer: {
+    position: "absolute",
+    width: 150,
+    height: 150,
+    paddingHorizontal: 30,
+    borderRadius: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 3,
+    borderColor: colors.orange,
+  },
 });
 
 const Temperature = () => {
@@ -57,7 +68,7 @@ const Temperature = () => {
         </TouchableOpacity>
       </Box>
       <Box style={[temperatureStyle.temperatureContainer]}>
-        <Text style={{ position: "absolute" }} variant="header">
+        <Text style={[temperatureStyle.celsiusContainer]} variant="header">
           {currentTemperature}
         </Text>
         <img style={{ margin: 50 }} src={TemperatureBg} />
