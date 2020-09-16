@@ -37,6 +37,7 @@ const temperatureStyle = StyleSheet.create({
 
 const Temperature = () => {
   const [currentTemperature, setcurrentTemperature] = useState(18);
+
   return (
     <Box
       style={[temperatureStyle.rootContainer]}
