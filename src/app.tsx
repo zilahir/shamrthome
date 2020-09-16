@@ -144,7 +144,7 @@ const App = () => {
             {format(new Date(), "'Today is' iiii")}
           </Text>
           <Text variant="subHeader">
-            It's currently snowing,
+            It's currently cloudy,
             <View style={[rootStyles.weatherIconContainer]}>
               <WiSnow size={36} color="#ffffff" />
             </View>

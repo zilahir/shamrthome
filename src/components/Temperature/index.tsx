@@ -54,17 +54,17 @@ const Temperature = () => {
         justifyContent="space-between"
       >
         <TouchableOpacity
-          onPress={() => setcurrentTemperature((state: number) => state + 1)}
-        >
-          <AddBoxIcon style={{ fontSize: 80 }} htmlColor={colors.purleLight} />
-        </TouchableOpacity>
-        <TouchableOpacity
           onPress={() => setcurrentTemperature((state: number) => state - 1)}
         >
           <IndeterminateCheckBoxIcon
             style={{ fontSize: 80 }}
             htmlColor={colors.purleLight}
           />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => setcurrentTemperature((state: number) => state + 1)}
+        >
+          <AddBoxIcon style={{ fontSize: 80 }} htmlColor={colors.purleLight} />
         </TouchableOpacity>
       </Box>
       <Box style={[temperatureStyle.temperatureContainer]}>
