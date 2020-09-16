@@ -43,7 +43,7 @@ const Temperature = () => {
       margin="s"
       borderColor="purpleLight"
       borderWidth={2}
-      borderRadius="l"
+      borderRadius="m"
     >
       <Box
         style={[temperatureStyle.iconContiner]}

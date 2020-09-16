@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Dimensions, StyleSheet } from "react-native";
+import { View, Dimensions, StyleSheet, Image } from "react-native";
 import { WiSnow } from "weather-icons-react";
 import { format } from "date-fns";
 import moment from "moment";
@@ -13,6 +13,18 @@ import { eventsApi } from "./fakeApi/events";
 import { getLeavingTrains, TimeTable } from "./api/trains";
 import { getFinnishNews, getHungarianNews, News } from "./api/news";
 import Temperature from "./components/Temperature";
+
+const rainIcon = {
+  src: require("./assets/icons/water_drop.svg"),
+  width: 12,
+  heigh: 18,
+};
+
+const temperatureIcon = {
+  src: require("./assets/icons/temperature.svg"),
+  width: 12,
+  heigh: 18,
+};
 
 const { width } = Dimensions.get("window");
 
@@ -71,6 +83,20 @@ const rootStyles = StyleSheet.create({
     fontSize: 24,
     color: "#ffffff",
   },
+  metaContainer: {
+    height: 30,
+  },
+  oneMeta: {
+    display: "flex",
+    alignItems: "center",
+    width: 80,
+    height: 30,
+    flexDirection: "row",
+  },
+  metaText: {
+    color: "#ffffff",
+    marginLeft: 10,
+  },
 });
 
 const App = () => {
@@ -83,9 +109,11 @@ const App = () => {
     });
     getHungarianNews().then((result: News[]) => {
       setHungarianNews(result);
+      // console.debug('index', result)
     });
     getFinnishNews().then((result: News[]) => {
       setFinnishNews(result);
+      // console.debug('iltalehti', result)
     });
   }, []);
   return (
@@ -99,7 +127,7 @@ const App = () => {
       >
         <Box
           padding="l"
-          borderRadius="l"
+          borderRadius="m"
           borderWidth={3}
           borderColor="purpleLight"
           margin="s"
@@ -118,10 +146,41 @@ const App = () => {
             and -19°c outside.
           </Text>
         </Box>
+
+        <Box
+          padding="s"
+          borderRadius="m"
+          margin="s"
+          style={rootStyles.metaContainer}
+          flexDirection="row"
+          justifyContent="flex-end"
+        >
+          <View style={[rootStyles.oneMeta]}>
+            <Image
+              source={rainIcon.src}
+              style={{
+                width: rainIcon.width,
+                height: rainIcon.heigh,
+              }}
+            />
+            <Text style={[rootStyles.metaText]}>35%</Text>
+          </View>
+          <View style={[rootStyles.oneMeta]}>
+            <Image
+              source={temperatureIcon.src}
+              style={{
+                width: temperatureIcon.width,
+                height: temperatureIcon.heigh,
+              }}
+            />
+            <Text style={[rootStyles.metaText]}>-19 °c</Text>
+          </View>
+        </Box>
+
         <Box flexDirection="row">
           <Box
             margin="s"
-            borderRadius="l"
+            borderRadius="m"
             backgroundColor="purpleLight"
             justifyContent="center"
             padding="m"
@@ -134,7 +193,7 @@ const App = () => {
           </Box>
           <Box
             margin="s"
-            borderRadius="l"
+            borderRadius="m"
             backgroundColor="purpleLight"
             justifyContent="center"
             padding="m"
@@ -157,7 +216,7 @@ const App = () => {
       >
         <Box
           margin="s"
-          borderRadius="l"
+          borderRadius="m"
           backgroundColor="orange"
           justifyContent="center"
           padding="m"
@@ -182,7 +241,7 @@ const App = () => {
         </Box>
         <Box
           margin="s"
-          borderRadius="l"
+          borderRadius="m"
           backgroundColor="mainAppColor"
           borderColor="purpleLight"
           borderWidth={3}
