@@ -13,6 +13,7 @@ import { eventsApi } from "./fakeApi/events";
 import { getLeavingTrains, TimeTable } from "./api/trains";
 import { getFinnishNews, getHungarianNews, News } from "./api/news";
 import Temperature from "./components/Temperature";
+import { WeatherData, getWeatherData } from "./api/weather";
 
 const rainIcon = {
   src: require("./assets/icons/water_drop.svg"),
@@ -103,6 +104,7 @@ const App = () => {
   const [trains, setTrains] = useState<Array<TimeTable>>([]);
   const [hungarianNews, setHungarianNews] = useState<Array<News>>([]);
   const [finnishNews, setFinnishNews] = useState<Array<News>>([]);
+  const [weatherData, setWeatherData] = useState<WeatherData>();
   useEffect(() => {
     getLeavingTrains().then((result: TimeTable[]) => {
       setTrains(result);
@@ -114,6 +116,9 @@ const App = () => {
     getFinnishNews().then((result: News[]) => {
       setFinnishNews(result);
       // console.debug('iltalehti', result)
+    });
+    getWeatherData().then((result: WeatherData) => {
+      setWeatherData(result);
     });
   }, []);
   return (
@@ -143,7 +148,7 @@ const App = () => {
             <View style={[rootStyles.weatherIconContainer]}>
               <WiSnow size={36} color="#ffffff" />
             </View>
-            and -19°c outside.
+            and {`${weatherData?.main.temp}°c`} outside.
           </Text>
         </Box>
 
@@ -173,7 +178,9 @@ const App = () => {
                 height: temperatureIcon.heigh,
               }}
             />
-            <Text style={[rootStyles.metaText]}>-19 °c</Text>
+            <Text style={[rootStyles.metaText]}>
+              {`${weatherData?.main.temp}°c`}
+            </Text>
           </View>
         </Box>
 
