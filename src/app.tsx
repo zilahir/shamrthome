@@ -168,7 +168,9 @@ const App = () => {
                 height: rainIcon.heigh,
               }}
             />
-            <Text style={[rootStyles.metaText]}>35%</Text>
+            <Text style={[rootStyles.metaText]}>
+              {`${weatherData?.main.humidity}%`}
+            </Text>
           </View>
           <View style={[rootStyles.oneMeta]}>
             <Image
