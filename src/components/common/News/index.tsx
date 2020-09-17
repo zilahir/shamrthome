@@ -22,6 +22,7 @@ const Newss = (): ReactElement => {
       <Grid item lg={6}>
         <Box className={styles.newsRootContainer}>
           <div className={styles.innerContainer}>
+            <h1>Index 🇭🇺</h1>
             <ul>
               {hungarianNews.map((currentNews: News) => (
                 <li key={currentNews.guid}>{currentNews.title}</li>
@@ -33,6 +34,7 @@ const Newss = (): ReactElement => {
       <Grid item lg={6}>
         <Box className={styles.newsRootContainer}>
           <div className={styles.innerContainer}>
+            <h1>Iltalehti 🇫🇮</h1>
             <ul>
               {finnishNews.map((currentNews: News) => (
                 <li key={currentNews.guid}>{currentNews.title}</li>
