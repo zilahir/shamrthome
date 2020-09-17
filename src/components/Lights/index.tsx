@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+
 import Light from "../common/Light";
 
 import styles from "./Lights.module.scss";

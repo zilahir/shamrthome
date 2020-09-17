@@ -18,3 +18,23 @@
     }
   }
 }
+
+.flexContainer {
+  flex: 1;
+  display: flex;
+}
+
+.handler {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  img {
+    max-width: 10px;
+  }
+
+  p {
+    @include paragraph(16px, #ffffff, 0);
+    margin-left: 20px;
+  }
+}

@@ -3,8 +3,27 @@ import { Grid } from "@material-ui/core";
 
 import Box from "../Box";
 import { getFinnishNews, getHungarianNews, News } from "../../../api/news";
+import indexLogo from "../../../assets/misc/index.png";
+import iltaLehtiLogo from "../../../assets/misc/iltalehti.png";
 
 import styles from "./News.module.scss";
+
+interface HandlerProps {
+  type: "INDEX" | "ILTALEHTI";
+}
+
+const Handler = ({ type }: HandlerProps): ReactElement =>
+  type === "INDEX" ? (
+    <div className={styles.handler}>
+      <img src={indexLogo} alt="index" />
+      <p>Index</p>
+    </div>
+  ) : (
+    <div className={styles.handler}>
+      <img src={iltaLehtiLogo} alt="iltalehti" />
+      <p>Iltalehti</p>
+    </div>
+  );
 
 const Newss = (): ReactElement => {
   const [hungarianNews, setHungarianNews] = useState<Array<News>>([]);
@@ -19,8 +38,12 @@ const Newss = (): ReactElement => {
   }, []);
   return (
     <Grid container>
-      <Grid item lg={6}>
-        <Box className={styles.newsRootContainer}>
+      <Grid className={styles.flexContainer} item lg={6}>
+        <Box
+          isExpendable
+          className={styles.newsRootContainer}
+          handler={<Handler type="INDEX" />}
+        >
           <div className={styles.innerContainer}>
             <h1>Index 🇭🇺</h1>
             <ul>
@@ -31,8 +54,12 @@ const Newss = (): ReactElement => {
           </div>
         </Box>
       </Grid>
-      <Grid item lg={6}>
-        <Box className={styles.newsRootContainer}>
+      <Grid className={styles.flexContainer} item lg={6}>
+        <Box
+          handler={<Handler type="ILTALEHTI" />}
+          isExpendable
+          className={styles.newsRootContainer}
+        >
           <div className={styles.innerContainer}>
             <h1>Iltalehti 🇫🇮</h1>
             <ul>

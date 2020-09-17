@@ -1,4 +1,4 @@
-import React, { ReactChild, ReactElement } from "react";
+import React, { ReactChild, ReactElement, useState } from "react";
 import styled from "styled-components";
 import classnames from "classnames";
 
@@ -19,24 +19,35 @@ const BoxContainer = styled.div<Style>`
 `;
 
 interface BoxProps {
-  children: ReactChild[] | ReactChild;
+  children?: ReactChild[] | ReactChild;
   className?: string;
   hasBorder?: boolean;
+  isExpendable?: boolean;
+  handler?: ReactElement;
 }
 
 const Box = ({
   children,
   className,
   hasBorder = true,
-}: BoxProps): ReactElement => (
-  <BoxContainer
-    borderRadius={theme.borderRadii.m}
-    borderColor={colors.orange}
-    className={classnames(styles.boxContainer, className)}
-    borderWidth={hasBorder ? 2 : 0}
-  >
-    {children}
-  </BoxContainer>
-);
+  isExpendable = false,
+  handler,
+}: BoxProps): ReactElement => {
+  const [isExtended, toggleExtended] = useState<boolean>(false);
+  return (
+    <BoxContainer
+      borderRadius={theme.borderRadii.m}
+      borderColor={colors.orange}
+      className={classnames(styles.boxContainer, className)}
+      borderWidth={hasBorder ? 2 : 0}
+      onClick={() =>
+        isExpendable ? toggleExtended((currState) => !currState) : null
+      }
+    >
+      {!isExtended && isExpendable && handler}
+      {(isExtended || !isExpendable) && children}
+    </BoxContainer>
+  );
+};
 
 export default Box;
