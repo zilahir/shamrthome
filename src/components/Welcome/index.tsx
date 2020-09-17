@@ -15,7 +15,7 @@ const Welcome = (): ReactElement => {
   }, []);
   return (
     <Box className={styles.welcomeContainer}>
-      <h1>Welocmme home</h1>
+      <h1>Welcome home</h1>
       <div className={styles.innerContainer}>
         <p>
           Today is <span>{format(new Date(), "iiii")}</span>
