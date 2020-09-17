@@ -1,32 +1,35 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import WbIncandescentIcon from "@material-ui/icons/WbIncandescent";
 import { Grid } from "@material-ui/core";
 
 import Light from "../common/Light";
 import Box from "../common/Box";
 import { colors } from "../../theme/colors";
+import Modal from "../common/Modal";
 
 import styles from "./Lights.module.scss";
 
-const LightHandler = (): ReactElement => (
-  <div className={styles.lightsHandler}>
-    <WbIncandescentIcon htmlColor={colors.orange} /> <span>Lights</span>
-  </div>
-);
-
 const Lights = (): ReactElement => {
+  const [isModal, setModal] = useState(false);
   return (
     <Grid item>
       <Box
         isExpandable
         className={styles.lightsContainer}
-        handler={<LightHandler />}
+        handler={
+          <div className={styles.lightsHandler} onClick={() => setModal(true)}>
+            <WbIncandescentIcon htmlColor={colors.orange} /> <span>Lights</span>
+          </div>
+        }
       >
         <Light />
         <Light />
         <Light />
         <Light />
       </Box>
+      <Modal isModal={isModal} setModal={setModal}>
+        <p>hello</p>
+      </Modal>
     </Grid>
   );
 };
