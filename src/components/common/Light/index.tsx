@@ -1,5 +1,6 @@
-import React, { ReactElement, useState } from "react";
+import React, { MouseEvent, ReactElement, useState } from "react";
 import { Range, Direction, getTrackBackground } from "react-range";
+
 import { colors } from "../../../theme/colors";
 
 import styles from "./Light.module.scss";
@@ -14,8 +15,13 @@ const Light = (): ReactElement => {
   function handleChange(numbers: Array<number>): void {
     setValue(numbers);
   }
+
+  function handleClick(event: MouseEvent<HTMLDivElement>): void {
+    event.stopPropagation();
+    console.debug("event", event);
+  }
   return (
-    <div className={styles.oneLight}>
+    <div onClick={(event) => handleClick(event)} className={styles.oneLight}>
       <Range
         direction={Direction.Up}
         values={value}
