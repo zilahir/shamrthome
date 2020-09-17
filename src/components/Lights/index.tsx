@@ -18,10 +18,13 @@ const Lights = (): ReactElement => {
   return (
     <Grid item>
       <Box
-        isExpendable
+        isExpandable
         className={styles.lightsContainer}
         handler={<LightHandler />}
       >
+        <Light />
+        <Light />
+        <Light />
         <Light />
       </Box>
     </Grid>

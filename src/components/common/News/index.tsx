@@ -40,9 +40,9 @@ const Newss = (): ReactElement => {
     <>
       <Grid item>
         <Box
-          isExpendable
           className={styles.newsRootContainer}
           handler={<Handler type="INDEX" />}
+          isExpandable
         >
           <div className={styles.innerContainer}>
             <h1>Index 🇭🇺</h1>
@@ -57,8 +57,8 @@ const Newss = (): ReactElement => {
       <Grid item>
         <Box
           handler={<Handler type="ILTALEHTI" />}
-          isExpendable
           className={styles.newsRootContainer}
+          isExpandable
         >
           <div className={styles.innerContainer}>
             <h1>Iltalehti 🇫🇮</h1>

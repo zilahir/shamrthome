@@ -1,8 +1,8 @@
 @import "../../styles/variables";
 @import "../../styles/miixins/paragraph";
 
-.lightContainer {
-  
+.lightsContainer {
+  flex-direction: column;
 }
 
 .lightsHandler {

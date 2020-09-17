@@ -4,19 +4,10 @@
 .boxContainer {
   padding: $box-padding-l;
   border-style: solid;
-  position: relative;
   margin: 20px;
+  z-index: 9;
 
   h1 {
     @include paragraph(40px, #ffffff, 0);
   }
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9;
 }

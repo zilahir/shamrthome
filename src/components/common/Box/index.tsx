@@ -1,6 +1,5 @@
-import React, { ReactChild, ReactElement, useState } from "react";
+import React, { ReactElement, ReactChild } from "react";
 import styled from "styled-components";
-import ReactDOM from "react-dom";
 import classnames from "classnames";
 
 import theme, { colors } from "../../../theme/colors";
@@ -20,23 +19,20 @@ const BoxContainer = styled.div<Style>`
 `;
 
 interface BoxProps {
-  children?: ReactChild[] | ReactChild;
   className?: string;
   hasBorder?: boolean;
-  isExpendable?: boolean;
   handler?: ReactElement;
+  children?: ReactChild[] | ReactChild;
+  isExpandable?: boolean;
 }
 
 const Box = ({
-  children,
   className,
   hasBorder = true,
-  isExpendable = false,
   handler,
+  children,
+  isExpandable = false,
 }: BoxProps): ReactElement => {
-  const [isExtended, toggleExtended] = useState<boolean>(false);
-
-  const targetElement: HTMLDivElement | null = document.querySelector("#root");
   return (
     <>
       <BoxContainer
@@ -44,21 +40,10 @@ const Box = ({
         borderColor={colors.orange}
         className={classnames(styles.boxContainer, className)}
         borderWidth={hasBorder ? 2 : 0}
-        onClick={() =>
-          isExpendable ? toggleExtended((currState) => !currState) : null
-        }
       >
-        {!isExtended && isExpendable && handler}
-        {(isExtended || !isExpendable) && children}
+        {handler}
+        {!isExpandable && children}
       </BoxContainer>
-      {isExtended &&
-        ReactDOM.createPortal(
-          <div
-            onClick={() => toggleExtended(false)}
-            className={styles.overlay}
-          />,
-          targetElement ? targetElement : document.body
-        )}
     </>
   );
 };
