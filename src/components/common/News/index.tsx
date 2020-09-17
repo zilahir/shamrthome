@@ -37,8 +37,8 @@ const Newss = (): ReactElement => {
     });
   }, []);
   return (
-    <Grid container>
-      <Grid className={styles.flexContainer} item lg={6}>
+    <>
+      <Grid item>
         <Box
           isExpendable
           className={styles.newsRootContainer}
@@ -54,7 +54,7 @@ const Newss = (): ReactElement => {
           </div>
         </Box>
       </Grid>
-      <Grid className={styles.flexContainer} item lg={6}>
+      <Grid item>
         <Box
           handler={<Handler type="ILTALEHTI" />}
           isExpendable
@@ -70,7 +70,7 @@ const Newss = (): ReactElement => {
           </div>
         </Box>
       </Grid>
-    </Grid>
+    </>
   );
 };
 

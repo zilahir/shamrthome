@@ -5,6 +5,7 @@ import TrainSchedule from "../Train";
 import Welcome from "../Welcome";
 import Meta from "../Meta";
 import News from "../common/News";
+import Lamps from "../Lights";
 
 const Root = (): ReactElement => (
   <>
@@ -12,7 +13,10 @@ const Root = (): ReactElement => (
       <Grid item lg={9}>
         <Welcome />
         <Meta />
-        <News />
+        <Grid container>
+          <News />
+          <Lamps />
+        </Grid>
       </Grid>
       <Grid item lg>
         <TrainSchedule />

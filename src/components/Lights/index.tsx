@@ -1,14 +1,30 @@
 import React, { ReactElement } from "react";
+import WbIncandescentIcon from "@material-ui/icons/WbIncandescent";
+import { Grid } from "@material-ui/core";
 
 import Light from "../common/Light";
+import Box from "../common/Box";
+import { colors } from "../../theme/colors";
 
 import styles from "./Lights.module.scss";
 
+const LightHandler = (): ReactElement => (
+  <div className={styles.lightsHandler}>
+    <WbIncandescentIcon htmlColor={colors.orange} /> <span>Lights</span>
+  </div>
+);
+
 const Lights = (): ReactElement => {
   return (
-    <div className={styles.lightContainer}>
-      <Light />
-    </div>
+    <Grid item>
+      <Box
+        isExpendable
+        className={styles.lightsContainer}
+        handler={<LightHandler />}
+      >
+        <Light />
+      </Box>
+    </Grid>
   );
 };
 

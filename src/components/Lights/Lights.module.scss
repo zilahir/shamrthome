@@ -4,3 +4,13 @@
 .lightContainer {
   
 }
+
+.lightsHandler {
+  display: flex;
+  align-items: center;
+
+  span {
+    @include paragraph(16px, #ffffff, 0);
+    margin-left: 10px;
+  }
+}

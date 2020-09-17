@@ -12,7 +12,7 @@
       list-style-type: none;
 
       li {
-        @include paragraph(18px, #ffffff, 0);
+        @include paragraph(18px, #0e0d0d, 0);
         margin: 10px 0;
       }
     }
@@ -30,7 +30,9 @@
   align-items: center;
 
   img {
-    max-width: 10px;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
   }
 
   p {
