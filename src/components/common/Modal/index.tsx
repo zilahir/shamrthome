@@ -2,6 +2,7 @@ import React, { ReactChild, ReactElement } from "react";
 import { AnimatePresence } from "framer-motion";
 
 import { BounceInDownDiv } from "./components/BounceInDown";
+import { colors } from "../../../theme/colors";
 
 interface ModalProps {
   isModal: boolean;
@@ -16,7 +17,7 @@ const Modal = ({ isModal, setModal, children }: ModalProps): ReactElement => {
         <BounceInDownDiv
           style={{
             position: "fixed",
-            background: "#eee",
+            background: colors.mainAppColor,
             width: "90%",
             height: "90%",
             display: "flex",
@@ -28,6 +29,7 @@ const Modal = ({ isModal, setModal, children }: ModalProps): ReactElement => {
             right: 0,
             bottom: 0,
             left: 0,
+            zIndex: 9,
           }}
         >
           <button

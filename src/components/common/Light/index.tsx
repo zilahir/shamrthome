@@ -66,6 +66,9 @@ const Light = (): ReactElement => {
                   direction: Direction.Up,
                 }),
                 alignSelf: "center",
+                borderWidth: 2,
+                borderStyle: "solid",
+                borderColor: colors.orange,
               }}
             >
               {children}

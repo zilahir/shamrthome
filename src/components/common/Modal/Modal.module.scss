@@ -9,3 +9,11 @@
   right: 0;
   z-index: 1;
 }
+
+.innerContainer {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+
+}

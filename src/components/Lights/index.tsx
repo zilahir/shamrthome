@@ -21,14 +21,14 @@ const Lights = (): ReactElement => {
             <WbIncandescentIcon htmlColor={colors.orange} /> <span>Lights</span>
           </div>
         }
-      >
-        <Light />
-        <Light />
-        <Light />
-        <Light />
-      </Box>
+      />
       <Modal isModal={isModal} setModal={setModal}>
-        <p>hello</p>
+        <div className={styles.lightInnerContainer}>
+          <Light />
+          <Light />
+          <Light />
+          <Light />
+        </div>
       </Modal>
     </Grid>
   );
