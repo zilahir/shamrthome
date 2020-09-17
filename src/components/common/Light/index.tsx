@@ -1,9 +1,10 @@
 import React, { ReactElement, useState } from "react";
 import { Range, Direction, getTrackBackground } from "react-range";
+import { colors } from "../../../theme/colors";
 
 import styles from "./Light.module.scss";
 
-const STEP = 10;
+const STEP = 1;
 const MIN = 0;
 const MAX = 100;
 
@@ -29,8 +30,7 @@ const Light = (): ReactElement => {
               ...props.style,
               height: index % 2 ? "3px" : "4px",
               width: index % 2 ? "11px" : "16px",
-              backgroundColor:
-                index * STEP > MAX - value[0] ? "#548BF4" : "#ccc",
+              backgroundColor: "transparent",
             }}
           />
         )}
@@ -41,7 +41,7 @@ const Light = (): ReactElement => {
             style={{
               ...props.style,
               flexGrow: 1,
-              width: "36px",
+              width: "80px",
               display: "flex",
               height: "600px",
             }}
@@ -49,12 +49,12 @@ const Light = (): ReactElement => {
             <div
               ref={props.ref}
               style={{
-                width: "5px",
+                width: "250px",
                 height: "100%",
-                borderRadius: "4px",
+                borderRadius: "20px",
                 background: getTrackBackground({
                   values: value,
-                  colors: ["#548BF4", "#ccc"],
+                  colors: [colors.orange, colors.mainAppColor],
                   min: MIN,
                   max: MAX,
                   direction: Direction.Up,
@@ -70,15 +70,7 @@ const Light = (): ReactElement => {
           <div
             {...props}
             style={{
-              ...props.style,
-              height: "42px",
-              width: "42px",
-              borderRadius: "4px",
-              backgroundColor: "#FFF",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              boxShadow: "0px 2px 6px #AAA",
+              display: "none",
             }}
           >
             <div
