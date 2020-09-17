@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import axios, { AxiosResponse } from "axios";
+import { WiDaySunny, WiCloudy } from "weather-icons-react";
 
 interface Coord {
   lon: number;
@@ -52,6 +53,23 @@ export interface WeatherData {
   id: number;
   name: string;
   cod: number;
+}
+
+export interface ComposedWeather {
+  icon: string;
+  text: string;
+}
+
+export function createVerb(weatherData: Weather | undefined): ComposedWeather {
+  const result = { icon: "", text: "" };
+  if (weatherData && weatherData.main.toLowerCase() === "rain") {
+    result.text = "raining";
+    result.icon = WiDaySunny;
+  } else if (weatherData && weatherData.main.toLowerCase() === "clouds") {
+    result.text = "cloudy";
+    result.icon = WiCloudy;
+  }
+  return result;
 }
 
 export const getWeatherData = (): Promise<WeatherData> =>

@@ -1,4 +1,3 @@
-import { createBox, createText } from "@shopify/restyle";
 import hexToRgba from "hex-to-rgba";
 
 export const colors = {
@@ -47,8 +46,4 @@ const theme = {
   },
 };
 
-export type Theme = typeof theme;
 export default theme;
-
-export const Box = createBox<Theme>();
-export const Text = createText<Theme>();
