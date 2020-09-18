@@ -3,6 +3,8 @@ import { Grid } from "@material-ui/core";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import IndeterminateCheckBoxIcon from "@material-ui/icons/IndeterminateCheckBox";
 import styled from "styled-components";
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 import Modal from "../common/Modal";
 import Box from "../common/Box";
@@ -29,6 +31,12 @@ const Handler = ({ openModal }: HandlerProps): ReactElement => (
     <img src={temperatureIcon} alt="temperature" /> <span>Temperature</span>
   </div>
 );
+
+const ONEPERCENTAGE = 0.3
+
+const percentage = (temperate: number):number => (
+  temperate * ONEPERCENTAGE * 10
+)
 
 const Temperature = (): ReactElement => {
   const [isModalOpen, toggleModalOpen] = useState<boolean>(false);
@@ -57,6 +65,15 @@ const Temperature = (): ReactElement => {
               <div className={styles.bgContainer}>
                 <h1>{currentTemp}</h1>
               </div>
+              <CircularProgressbar
+                value={percentage(currentTemp)}
+                className={styles.progressBar}
+                strokeWidth={2}
+                styles={buildStyles({
+                  trailColor: "transparent",
+                  pathColor: colors.orange,
+                })}
+              />
             </TempBg>
           </div>
         </div>
