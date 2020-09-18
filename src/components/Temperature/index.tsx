@@ -14,6 +14,7 @@ import { colors } from "../../theme/colors";
 import temperatureBg from "../../assets/temperature_background.svg";
 
 import styles from "./Temperature.module.scss";
+import { Room, rooms } from "../../api/rooms";
 
 interface HandlerProps {
   openModal: () => void;
@@ -43,9 +44,24 @@ const checkTemperature = (temperature: number, direction: "PLUS" | "MINUS") => (
   direction === "PLUS" ? temperature <= 5 : temperature >= 33
 )
 
+interface RoomButtonProps {
+  borderTopLeftRadius: number;
+  borderBottomLeftRadius: number;
+  borderTopRightRadius: number;
+  borderBottomRightRadius: number;
+}
+
+const RoomButton = styled.li<RoomButtonProps>`
+  border-top-left-radius: ${props => props.borderTopLeftRadius}px;
+  border-bottom-left-radius: ${props => props.borderBottomLeftRadius}px;
+  border-top-right-radius: ${props => props.borderTopRightRadius}px;
+  border-bottom-right-radius: ${props => props.borderBottomRightRadius}px;
+`
+
 const Temperature = (): ReactElement => {
   const [isModalOpen, toggleModalOpen] = useState<boolean>(false);
   const [currentTemp, setTemperature] = useState<number>(16);
+  const [activeRoom, setActiveRoom] = useState<number>(1);
   return (
     <Grid item>
       <Box
@@ -54,6 +70,25 @@ const Temperature = (): ReactElement => {
       />
       <Modal isModal={isModalOpen} setModal={toggleModalOpen}>
         <div className={styles.temperatureContainer}>
+          <div className={styles.btnContainer}>
+            <ul>
+              {rooms.getAllRooms(4).map((currentRoom: Room, index: number) => (
+                <RoomButton
+                  borderTopLeftRadius={index === 0 ? 5 : 0}
+                  borderBottomLeftRadius={index === 0 ? 5 : 0}
+                  borderTopRightRadius={index === rooms.getAllRooms(4).length - 1 ? 5 : 0}
+                  borderBottomRightRadius={index === rooms.getAllRooms(4).length - 1 ?  5 : 0}
+                  key={currentRoom.id}
+                  onClick={() => setActiveRoom(index)}
+                  className={classnames(
+                    index === activeRoom ? styles.active : "",
+                  )}
+                >
+                  {currentRoom.name}
+                </RoomButton>
+              ))}
+            </ul>
+          </div>
           <div className={styles.btnContainer}>
             <span
               onClick={() => setTemperature(currentValue => currentValue - 1)}
