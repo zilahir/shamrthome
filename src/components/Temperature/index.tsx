@@ -32,6 +32,7 @@ const Handler = ({ openModal }: HandlerProps): ReactElement => (
 
 const Temperature = (): ReactElement => {
   const [isModalOpen, toggleModalOpen] = useState<boolean>(false);
+  const [currentTemp, setTemperature] = useState<number>(16);
   return (
     <Grid item>
       <Box
@@ -41,10 +42,10 @@ const Temperature = (): ReactElement => {
       <Modal isModal={isModalOpen} setModal={toggleModalOpen}>
         <div className={styles.temperatureContainer}>
           <div className={styles.btnContainer}>
-            <span>
+            <span onClick={() => setTemperature(currentValue => currentValue - 1)}>
               <AddBoxIcon htmlColor={colors.purleLight} fontSize="large" />
             </span>
-            <span>
+            <span onClick={() => setTemperature(currentValue => currentValue + 1)}>
               <IndeterminateCheckBoxIcon
                 htmlColor={colors.purleLight}
                 fontSize="large"
@@ -54,7 +55,7 @@ const Temperature = (): ReactElement => {
           <div className={styles.temperatureInnerContainer}>
             <TempBg className={styles.bgImage} bgImage={temperatureBg}>
               <div className={styles.bgContainer}>
-                <h1>19</h1>
+                <h1>{currentTemp}</h1>
               </div>
             </TempBg>
           </div>
