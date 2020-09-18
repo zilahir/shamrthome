@@ -4,9 +4,9 @@ import AddBoxIcon from "@material-ui/icons/AddBox";
 import IndeterminateCheckBoxIcon from "@material-ui/icons/IndeterminateCheckBox";
 import styled from "styled-components";
 
+import Modal from "../common/Modal";
 import Box from "../common/Box";
 import temperatureIcon from "../../assets/icons/temperature.svg";
-import Modal from "../common/Modal";
 import { colors } from "../../theme/colors";
 import temperatureBg from "../../assets/temperature_background.svg";
 
@@ -47,12 +47,12 @@ const Temperature = (): ReactElement => {
               fontSize="large"
             />
           </div>
-          <div className={styles.temperatureInnerContainer}>            
-              <TempBg className={styles.bgImage} bgImage={temperatureBg}>
-                <div className={styles.bgContainer}>
-                  <h1>19</h1>
-                </div>
-              </TempBg>
+          <div className={styles.temperatureInnerContainer}>
+            <TempBg className={styles.bgImage} bgImage={temperatureBg}>
+              <div className={styles.bgContainer}>
+                <h1>19</h1>
+              </div>
+            </TempBg>
           </div>
         </div>
       </Modal>
