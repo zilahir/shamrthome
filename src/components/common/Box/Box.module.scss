@@ -2,7 +2,9 @@
 @import '../../../styles/miixins/paragraph';
 
 .boxContainer {
-  padding: $box-padding-l;
+  &.hasPadding {
+    padding: $box-padding-l;
+  }
   border-style: solid;
   margin: 20px;
   z-index: 9;

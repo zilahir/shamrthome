@@ -24,6 +24,7 @@ interface BoxProps {
   handler?: ReactElement;
   children?: ReactChild[] | ReactChild;
   isExpandable?: boolean;
+  hasPadding?: boolean;
 }
 
 const Box = ({
@@ -32,13 +33,15 @@ const Box = ({
   handler,
   children,
   isExpandable = false,
+  hasPadding = false,
+
 }: BoxProps): ReactElement => {
   return (
     <>
       <BoxContainer
         borderRadius={theme.borderRadii.m}
         borderColor={colors.orange}
-        className={classnames(styles.boxContainer, className)}
+        className={classnames(styles.boxContainer, className, hasPadding ? styles.hasPadding : "")}
         borderWidth={hasBorder ? 2 : 0}
       >
         {handler}

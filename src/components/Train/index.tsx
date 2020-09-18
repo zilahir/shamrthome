@@ -16,7 +16,7 @@ const TrainSchedule = (): ReactElement => {
     });
   }, []);
   return (
-    <Box className={styles.trainSchedule}>
+    <Box hasPadding className={styles.trainSchedule}>
       <h1>
         <TrainIcon fontSize="large" /> Trains leaving
       </h1>

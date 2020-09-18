@@ -43,13 +43,13 @@ const Temperature = (): ReactElement => {
         <div className={styles.temperatureContainer}>
           <div className={styles.btnContainer}>
             <span onClick={() => setTemperature(currentValue => currentValue - 1)}>
-              <AddBoxIcon htmlColor={colors.purleLight} fontSize="large" />
-            </span>
-            <span onClick={() => setTemperature(currentValue => currentValue + 1)}>
               <IndeterminateCheckBoxIcon
                 htmlColor={colors.purleLight}
                 fontSize="large"
               />
+            </span>
+            <span onClick={() => setTemperature(currentValue => currentValue + 1)}>
+              <AddBoxIcon htmlColor={colors.purleLight} fontSize="large" />
             </span>
           </div>
           <div className={styles.temperatureInnerContainer}>

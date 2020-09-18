@@ -14,7 +14,7 @@ const Welcome = (): ReactElement => {
     });
   }, []);
   return (
-    <Box className={styles.welcomeContainer}>
+    <Box hasPadding className={styles.welcomeContainer}>
       <h1>Welcome home</h1>
       <div className={styles.innerContainer}>
         <p>

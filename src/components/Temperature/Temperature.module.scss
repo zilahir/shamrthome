@@ -70,10 +70,17 @@
 .temperatureHandler {
   display: flex;
   align-items: center;
+  padding: 30px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
   img {
     width: 24px;
     height: 24px;
   }
+
   span {
     @include paragraph(16px, #ffffff, 0);
     margin-left: 10px;
