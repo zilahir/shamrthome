@@ -6,6 +6,7 @@ import Welcome from "../Welcome";
 import Meta from "../Meta";
 import News from "../common/News";
 import Lamps from "../Lights";
+import Temperature from "../Temperature";
 
 const Root = (): ReactElement => (
   <>
@@ -16,6 +17,7 @@ const Root = (): ReactElement => (
         <Grid container>
           <News />
           <Lamps />
+          <Temperature />
         </Grid>
       </Grid>
       <Grid item lg>
