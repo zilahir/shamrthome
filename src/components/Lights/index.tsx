@@ -24,10 +24,10 @@ const Lights = (): ReactElement => {
       />
       <Modal isModal={isModal} setModal={setModal}>
         <div className={styles.lightInnerContainer}>
-          <Light />
-          <Light />
-          <Light />
-          <Light />
+          <Light lampTitle="Makuuhuone" />
+          <Light lampTitle="Olohuone" />
+          <Light lampTitle="Keittiö" />
+          <Light lampTitle="Terassi" />
         </div>
       </Modal>
     </Grid>

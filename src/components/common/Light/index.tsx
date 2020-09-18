@@ -1,15 +1,31 @@
 import React, { MouseEvent, ReactElement, useState } from "react";
 import { Range, Direction, getTrackBackground } from "react-range";
+import EmojiObjectsIcon from "@material-ui/icons/EmojiObjects";
+import styled from "styled-components";
 
 import { colors } from "../../../theme/colors";
 
 import styles from "./Light.module.scss";
 
+interface BulbStyle {
+  opacity: number;
+}
+
+const Bulb = styled.span<BulbStyle>`
+  svg {
+    opacity: ${(props) => props.opacity};
+  }
+`;
+
 const STEP = 1;
 const MIN = 0;
 const MAX = 100;
 
-const Light = (): ReactElement => {
+interface LightProps {
+  lampTitle: string;
+}
+
+const Light = ({ lampTitle }: LightProps): ReactElement => {
   const [value, setValue] = useState<Array<number>>([10]);
 
   function handleChange(numbers: Array<number>): void {
@@ -22,6 +38,9 @@ const Light = (): ReactElement => {
   }
   return (
     <div onClick={(event) => handleClick(event)} className={styles.oneLight}>
+      <Bulb opacity={value[0] / 100} className={styles.bulb}>
+        <EmojiObjectsIcon fontSize="large" htmlColor="#ffffff" />
+      </Bulb>
       <Range
         direction={Direction.Up}
         values={value}
@@ -47,7 +66,7 @@ const Light = (): ReactElement => {
             style={{
               ...props.style,
               flexGrow: 1,
-              width: "80px",
+              width: "150px",
               display: "flex",
               height: "600px",
             }}
@@ -57,7 +76,7 @@ const Light = (): ReactElement => {
               style={{
                 width: "250px",
                 height: "100%",
-                borderRadius: "20px",
+                borderRadius: "40px",
                 background: getTrackBackground({
                   values: value,
                   colors: [colors.orange, colors.mainAppColor],
@@ -92,6 +111,7 @@ const Light = (): ReactElement => {
           </div>
         )}
       />
+      <h1>{lampTitle}</h1>
     </div>
   );
 };
