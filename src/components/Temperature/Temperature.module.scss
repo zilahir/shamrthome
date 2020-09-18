@@ -13,8 +13,25 @@
     justify-content: space-between;
     flex: 1;
 
-    svg {
-      font-size: 7rem;
+    span {
+      z-index: 9;
+      svg {
+        font-size: 6rem;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        svg {
+          fill: rgba($color: $purple-light, $alpha: 0.7)
+        }
+      }
+
+      &:active {
+        svg {
+          fill: rgba($color: $purple-light, $alpha: 0.9)
+        }
+      }
     }
   }
 

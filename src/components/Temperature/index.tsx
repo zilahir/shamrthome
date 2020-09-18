@@ -41,11 +41,15 @@ const Temperature = (): ReactElement => {
       <Modal isModal={isModalOpen} setModal={toggleModalOpen}>
         <div className={styles.temperatureContainer}>
           <div className={styles.btnContainer}>
-            <AddBoxIcon htmlColor={colors.purleLight} fontSize="large" />
-            <IndeterminateCheckBoxIcon
-              htmlColor={colors.purleLight}
-              fontSize="large"
-            />
+            <span>
+              <AddBoxIcon htmlColor={colors.purleLight} fontSize="large" />
+            </span>
+            <span>
+              <IndeterminateCheckBoxIcon
+                htmlColor={colors.purleLight}
+                fontSize="large"
+              />
+            </span>
           </div>
           <div className={styles.temperatureInnerContainer}>
             <TempBg className={styles.bgImage} bgImage={temperatureBg}>
