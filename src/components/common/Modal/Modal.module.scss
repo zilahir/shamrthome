@@ -16,5 +16,21 @@
   display: flex;
   flex-direction: column;
   outline: none;
+}
 
+.closeBtn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: none;
+  box-shadow: none;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }

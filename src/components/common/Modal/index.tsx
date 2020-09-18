@@ -1,6 +1,7 @@
 import React, { ReactChild, ReactElement } from "react";
 import { AnimatePresence } from "framer-motion";
 import ReactDOM from "react-dom";
+import CloseIcon from '@material-ui/icons/Close';
 
 import { colors } from "../../../theme/colors";
 
@@ -37,15 +38,8 @@ const Modal = ({ isModal, setModal, children }: ModalProps): ReactElement => {
               zIndex: 9,
             }}
           >
-            <button
-              style={{
-                position: "absolute",
-                top: 10,
-                right: 10,
-              }}
-              onClick={() => setModal(false)}
-            >
-              X
+            <button className={styles.closeBtn} onClick={() => setModal(false)}>
+              <CloseIcon htmlColor="#ffffff" />
             </button>
             {children}
           </BounceInDownDiv>
