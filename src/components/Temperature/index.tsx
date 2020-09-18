@@ -2,6 +2,7 @@ import React, { ReactElement, useState } from "react";
 import { Grid } from "@material-ui/core";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import IndeterminateCheckBoxIcon from "@material-ui/icons/IndeterminateCheckBox";
+import classnames from "classnames"
 import styled from "styled-components";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -38,6 +39,10 @@ const percentage = (temperate: number):number => (
   temperate * ONEPERCENTAGE * 10
 )
 
+const checkTemperature = (temperature: number, direction: "PLUS" | "MINUS") => (
+  direction === "PLUS" ? temperature <= 5 : temperature >= 33
+)
+
 const Temperature = (): ReactElement => {
   const [isModalOpen, toggleModalOpen] = useState<boolean>(false);
   const [currentTemp, setTemperature] = useState<number>(16);
@@ -50,13 +55,23 @@ const Temperature = (): ReactElement => {
       <Modal isModal={isModalOpen} setModal={toggleModalOpen}>
         <div className={styles.temperatureContainer}>
           <div className={styles.btnContainer}>
-            <span onClick={() => setTemperature(currentValue => currentValue - 1)}>
+            <span
+              onClick={() => setTemperature(currentValue => currentValue - 1)}
+              className={classnames(
+                checkTemperature(currentTemp, "PLUS") ? styles.disabled : "",
+              )}
+            >
               <IndeterminateCheckBoxIcon
                 htmlColor={colors.purleLight}
                 fontSize="large"
               />
             </span>
-            <span onClick={() => setTemperature(currentValue => currentValue + 1)}>
+            <span
+              onClick={() => setTemperature(currentValue => currentValue + 1)}
+              className={classnames(
+                checkTemperature(currentTemp, "MINUS") ? styles.disabled : "",
+              )}
+            >
               <AddBoxIcon htmlColor={colors.purleLight} fontSize="large" />
             </span>
           </div>
