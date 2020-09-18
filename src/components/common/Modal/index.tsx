@@ -15,22 +15,28 @@ interface ModalProps {
 const Modal = ({ isModal, setModal, children }: ModalProps): ReactElement => {
   const portalSelector = document.querySelector("#root");
   return (
-    <AnimatePresence>
-      {isModal && (
-        <>
-          <BounceInDownDiv className={styles.modalContainer}>
-            <button className={styles.closeBtn} onClick={() => setModal(false)}>
-              <CloseIcon htmlColor="#ffffff" />
-            </button>
-            {children}
-          </BounceInDownDiv>
-          {ReactDOM.createPortal(
-            <div className={styles.overlay} />,
-            portalSelector ? portalSelector : document.body
-          )}
-        </>
-      )}
-    </AnimatePresence>
+    <>
+      <AnimatePresence>
+        {isModal && (
+          <>
+            <BounceInDownDiv className={styles.modalContainer}>
+              <button
+                className={styles.closeBtn}
+                onClick={() => setModal(false)}
+              >
+                <CloseIcon htmlColor="#ffffff" />
+              </button>
+              {children}
+            </BounceInDownDiv>
+          </>
+        )}
+      </AnimatePresence>
+      {isModal &&
+        ReactDOM.createPortal(
+          <div className={styles.overlay} />,
+          portalSelector ? portalSelector : document.body
+        )}
+    </>
   );
 };
 
