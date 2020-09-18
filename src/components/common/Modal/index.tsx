@@ -33,7 +33,7 @@ const Modal = ({ isModal, setModal, children }: ModalProps): ReactElement => {
       </AnimatePresence>
       {isModal &&
         ReactDOM.createPortal(
-          <div className={styles.overlay} />,
+          <div onClick={() => setModal(false)} className={styles.overlay} />,
           portalSelector ? portalSelector : document.body
         )}
     </>
