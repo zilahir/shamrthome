@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+@import "../../styles/miixins/paragraph";
+
+.lightsContainer {
+  flex-direction: column;
+}
+
+.lightsHandler {
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  span {
+    @include paragraph(16px, #ffffff, 0);
+    margin-left: 10px;
+  }
+}
+
+.lightInnerContainer {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+}

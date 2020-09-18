@@ -1,0 +1,64 @@
+@import "../../styles/variables";
+@import "../../styles/miixins/paragraph";
+
+.temperatureContainer {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  align-items: center;
+  margin: 30px;
+
+  .btnContainer {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+
+    svg {
+      font-size: 7rem;
+    }
+  }
+
+  .temperatureInnerContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .bgContainer {
+      border: 3px solid $color-orange;
+    }
+
+    div {
+      padding: 70px;
+      border-radius: 100%;
+    }
+
+    h1 {
+      @include paragraph(66px, #ffffff, 0);
+    }
+
+    .bgImage {
+      background-size: cover;
+    }
+  }
+}
+
+.temperatureHandler {
+  display: flex;
+  align-items: center;
+  img {
+    width: 24px;
+    height: 24px;
+  }
+  span {
+    @include paragraph(16px, #ffffff, 0);
+    margin-left: 10px;
+  }
+}

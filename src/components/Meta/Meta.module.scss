@@ -1,0 +1,23 @@
+@import "../../styles/miixins/paragraph";
+@import "../../styles/variables";
+
+.metaContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+
+  div {
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 5px;
+    }
+    span {
+      @include paragraph(16px, #ffffff, 0);
+      margin: 0 10px;
+    }
+  }
+}

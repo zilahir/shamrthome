@@ -1,0 +1,48 @@
+@import "../../styles/variables";
+@import "../../styles/miixins/paragraph";
+
+.trainSchedule {
+  h1 {
+    display: flex;
+    align-items: center;
+    @include paragraph(22px, #ffffff, 0);
+    margin-bottom: 20px;
+
+    svg {
+      margin-right: 10px;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      @include paragraph(16px, #ffffff, 0);
+      padding: 10px;
+      background: rgba($color: $color-orange, $alpha: 1);
+      margin: 10px 0;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+
+      span {
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        opacity: 0.7;
+
+        svg {
+          margin-right: 10px;
+        }
+      }
+
+      &:last-of-type,
+      &:first-of-type
+      {
+        margin: 0;
+      }
+    }
+  }
+}

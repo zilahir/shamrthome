@@ -1,25 +1,19 @@
 import React from "react";
-import { ThemeProvider } from "@shopify/restyle";
-import { AppRegistry } from "react-native-web";
+import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
-import "./index.css";
-import App from "./app";
-import theme from "./theme/colors";
+import "./index.scss";
 import { persistor, store } from "./store/configureStore";
+import Root from "./components/Root";
 
-const AppLicatoinRoot = () => (
+ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ThemeProvider theme={theme}>
-          <App />
-        </ThemeProvider>
+        <Root />
       </PersistGate>
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
-
-AppRegistry.registerComponent("App", () => AppLicatoinRoot);
-AppRegistry.runApplication("App", { rootTag: document.querySelector("#root") });

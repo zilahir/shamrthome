@@ -1,0 +1,32 @@
+@import "../../styles/variables";
+@import "../../styles/miixins/paragraph";
+
+.wlcmImage {
+  position: absolute;
+  right: 0;
+  top: 0;
+  max-width: 100%;
+}
+
+.welcomeContainer {
+  .innerContainer {
+    margin: 10px 0;
+
+    &:first-of-type {
+      p {
+        @include paragraph(18px, #ffffff, 0);
+        font-weight: 300;
+        span {
+          font-weight: 800;
+        }
+      }
+    }
+
+    &:last-of-type {
+      p {
+        @include paragraph(16px, #ffffff, 0);
+        font-weight: 300;
+      }
+    }
+  }
+}

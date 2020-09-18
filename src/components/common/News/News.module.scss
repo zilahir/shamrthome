@@ -1,0 +1,42 @@
+@import "../../../styles/variables";
+@import "../../../styles/miixins/paragraph";
+
+.newsRootContainer {
+  .innerContainer {
+    h1 {
+      @include paragraph(22px, #ffffff, 0);
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+
+      li {
+        @include paragraph(18px, #0e0d0d, 0);
+        margin: 10px 0;
+      }
+    }
+  }
+}
+
+.flexContainer {
+  flex: 1;
+  display: flex;
+}
+
+.handler {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  p {
+    @include paragraph(16px, #ffffff, 0);
+    margin-left: 20px;
+  }
+}
