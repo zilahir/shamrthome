@@ -9,6 +9,20 @@
 }
 
 .welcomeContainer {
+  display: flex;
+  height: 100px;
+
+  div {
+    position: relative;
+
+    &.chartContainer {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
   .innerContainer {
     margin: 10px 0;
 
@@ -16,6 +30,7 @@
       p {
         @include paragraph(18px, #ffffff, 0);
         font-weight: 300;
+        text-align: left;
         span {
           font-weight: 800;
         }
