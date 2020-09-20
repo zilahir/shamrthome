@@ -8,7 +8,7 @@ const Lock = (): ReactElement => {
   return (
     <div
       className={classnames(styles.wrapper)}
-      onClick={() => toggleOpen(currValue => !currValue)}
+      onClick={() => toggleOpen((currValue) => !currValue)}
     >
       <svg viewBox="0 0 100 100">
         <path
