@@ -3,13 +3,9 @@
 
 .acContainer {
   display: flex;
+  align-items: center;
   flex: 1;
   justify-content: center; 
-}
-
-.acContainer {
-  display: flex;
-  align-items: center;
 
   span {
     @include paragraph(18px, #ffffff, 0);
