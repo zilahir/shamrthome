@@ -8,6 +8,7 @@ import Box from "../common/Box";
 import { colors } from "../../theme/colors";
 import Modal from "../common/Modal";
 import { doors, Door } from "../../api/doors";
+import Lock from "../common/Lock";
 
 import styles from "./Locks.module.scss";
 
@@ -69,6 +70,9 @@ const Locks = (): ReactElement => {
                 </RoomButton>
               ))}
             </ul>
+          </div>
+          <div className={styles.lockAnimationContainer}>
+            <Lock />
           </div>
         </div>
       </Modal>

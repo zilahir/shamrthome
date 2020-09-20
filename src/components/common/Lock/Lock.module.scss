@@ -1,0 +1,58 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+}
+.lock-top{
+  fill: none;
+  stroke: $purple-light;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 300;
+  stroke-dashoffset: -30;
+  transition: all 300ms ease-out;
+}
+.lock-top.loaded {
+  stroke-dashoffset: 0;
+  stroke: #fa113d
+}
+.lock-top.loaded ~ .lock-body {
+  fill: #fa113d;
+}
+.lock-top.loading {
+  stroke: #000;
+  opacity: 0.3;
+}
+
+.lock-outline{
+  fill: $purple-light;
+}
+.lock-body {
+  fill: $color-main;
+  opacity: 1;
+  transition: all 300ms ease-out;
+}
+.lock-body.loading{
+  fill: #000 !important;
+  opacity: 0.3;
+}
+
+.lock-spinner {
+  fill: none;
+  stroke: #000;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+.lock-spinner.loading{
+  opacity: 1;
+}
