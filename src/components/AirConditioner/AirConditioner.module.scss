@@ -6,6 +6,8 @@
   align-items: center;
   flex: 1;
   justify-content: center;
+  display: revert;
+  text-align: center;
 
   &.on {
     background: rgba($color: $color-orange, $alpha: 1.0);
