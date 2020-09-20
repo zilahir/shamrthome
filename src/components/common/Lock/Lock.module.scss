@@ -1,12 +1,8 @@
 @import "../../../styles/variables";
 
 .wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   cursor: pointer;
 }
 .lock-top{
@@ -21,10 +17,10 @@
 }
 .lock-top.loaded {
   stroke-dashoffset: 0;
-  stroke: #fa113d
+  stroke: $color-orange;
 }
 .lock-top.loaded ~ .lock-body {
-  fill: #fa113d;
+  fill: $color-orange;
 }
 .lock-top.loading {
   stroke: #000;
