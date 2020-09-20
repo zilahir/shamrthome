@@ -7,7 +7,7 @@ import styled from "styled-components";
 import Box from "../common/Box";
 import { colors } from "../../theme/colors";
 import Modal from "../common/Modal";
-import { Room, rooms } from "../../api/rooms";
+import { doors, Door } from "../../api/doors";
 
 import styles from "./Locks.module.scss";
 
@@ -49,27 +49,25 @@ const Locks = (): ReactElement => {
         <div className={styles.lightModal}>
           <div className={styles.btnContainer}>
             <ul>
-              {rooms
-                .getAllRooms([4])
-                .map((currentRoom: Room, index: number) => (
-                  <RoomButton
-                    borderTopLeftRadius={index === 0 ? 5 : 0}
-                    borderBottomLeftRadius={index === 0 ? 5 : 0}
-                    borderTopRightRadius={
-                      index === rooms.getAllRooms([4]).length - 1 ? 5 : 0
-                    }
-                    borderBottomRightRadius={
-                      index === rooms.getAllRooms([4]).length - 1 ? 5 : 0
-                    }
-                    key={currentRoom.id}
-                    onClick={() => setActiveRoom(index)}
-                    className={classnames(
-                      index === activeRoom ? styles.active : ""
-                    )}
-                  >
-                    {currentRoom.name}
-                  </RoomButton>
-                ))}
+              {doors.getAllDoors().map((currentDoor: Door, index: number) => (
+                <RoomButton
+                  borderTopLeftRadius={index === 0 ? 5 : 0}
+                  borderBottomLeftRadius={index === 0 ? 5 : 0}
+                  borderTopRightRadius={
+                    index === doors.getAllDoors().length - 1 ? 5 : 0
+                  }
+                  borderBottomRightRadius={
+                    index === doors.getAllDoors().length - 1 ? 5 : 0
+                  }
+                  key={currentDoor.id}
+                  onClick={() => setActiveRoom(index)}
+                  className={classnames(
+                    index === activeRoom ? styles.active : ""
+                  )}
+                >
+                  {currentDoor.name}
+                </RoomButton>
+              ))}
             </ul>
           </div>
         </div>
