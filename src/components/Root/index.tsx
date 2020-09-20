@@ -8,6 +8,7 @@ import News from "../common/News";
 import Lamps from "../Lights";
 import Temperature from "../Temperature";
 import Locks from "../Locks";
+import AirConditioner from "../AirConditioner";
 
 const Root = (): ReactElement => (
   <>
@@ -20,6 +21,7 @@ const Root = (): ReactElement => (
           <Lamps />
           <Temperature />
           <Locks />
+          <AirConditioner />
         </Grid>
       </Grid>
       <Grid item lg>
