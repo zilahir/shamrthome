@@ -34,7 +34,6 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    z-index: 99;
 
     li {
       @include paragraph(18px, #ffffff, 0);
