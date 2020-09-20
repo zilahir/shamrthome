@@ -34,14 +34,17 @@ const Box = ({
   children,
   isExpandable = false,
   hasPadding = false,
-
 }: BoxProps): ReactElement => {
   return (
     <>
       <BoxContainer
         borderRadius={theme.borderRadii.m}
         borderColor={colors.orange}
-        className={classnames(styles.boxContainer, className, hasPadding ? styles.hasPadding : "")}
+        className={classnames(
+          styles.boxContainer,
+          className,
+          hasPadding ? styles.hasPadding : ""
+        )}
         borderWidth={hasBorder ? 2 : 0}
       >
         {handler}
