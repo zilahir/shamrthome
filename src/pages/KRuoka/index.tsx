@@ -1,26 +1,27 @@
 import React, { ReactElement, useState } from "react";
 
-import { searchForKruokaProducts } from "../../api/kruoka";
+import { apiendPoints } from "../../api/apiEndpoints";
+import { asyncRequest } from "../../utils/requests";
 
 import styles from "./KRuoka.module.scss";
 
 const KRuoka = (): ReactElement => {
   const [products, setProducts] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
 
-  function handleSearch() {
-    searchForKruokaProducts(searchQuery).then((result: any) => {
-      console.debug('result', result)
-      setProducts(result);
+  function handleSearch(searchQuery: string) {
+    asyncRequest(apiendPoints.kruoka.findProduct, {
+      itemToSearch: searchQuery.toLowerCase(),
+    }).then((result: any) => {
+      if (Array.isArray(result.result)) {
+        setProducts(result.result);
+      }
     });
   }
   return (
     <>
       <input
         type="text"
-        onChange={(event) => setSearchQuery(event.target.value)}
-        onBlur={() => handleSearch()}
-        value={searchQuery}
+        onChange={(event) => handleSearch(event.target.value)}
       />
       <ul className={styles.list}>
         {products.map((currentProduct: any, index: number) => (

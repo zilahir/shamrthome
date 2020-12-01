@@ -1,16 +1,17 @@
 import axios from "axios";
 
-export const makeRequestCreator = (apiEndpoint: string): any => {
+export const makeRequestCreator = (): any => {
   let source: any;
-  return (params: string) => {
+  return (apiEndpoint: string, params: any) => {
     if (source) {
       source.cancel();
     }
     source = axios.CancelToken.source();
     return new Promise((resolve, reject) => {
       axios(apiEndpoint, {
+        method: "POST",
         cancelToken: source.token,
-        params,
+        data: params,
       })
         .then((response) => resolve(response.data))
         .catch((error) => reject(error));
@@ -18,5 +19,4 @@ export const makeRequestCreator = (apiEndpoint: string): any => {
   };
 };
 
-export const asyncRequest = (apiEndpoint: string): any =>
-  makeRequestCreator(apiEndpoint);
+export const asyncRequest = makeRequestCreator();
