@@ -4,7 +4,7 @@ import { apiendPoints } from "./apiEndpoints";
 
 interface ProductItem {
   productName: string;
-  productId: string;
+  productId: number;
 }
 
 export const searchForKruokaProducts = (queryString: string): Promise<any[]> =>

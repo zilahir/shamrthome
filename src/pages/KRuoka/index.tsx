@@ -3,6 +3,7 @@ import AddCircleRoundedIcon from "@material-ui/icons/AddCircleRounded";
 
 import { apiendPoints } from "../../api/apiEndpoints";
 import { asyncRequest } from "../../utils/requests";
+import { insertNewProductItem } from "../../api/kruoka";
 
 import styles from "./KRuoka.module.scss";
 
@@ -19,12 +20,12 @@ const KRuoka = (): ReactElement => {
     });
   }
 
-  function addProduct(productName: number, productId: string) {
-    const productObect = {
+  function addProduct(productName: string, productId: number) {
+    const productObject = {
       productId,
       productName,
     };
-    console.debug("productObject", productObect);
+    insertNewProductItem(productObject);
   }
   return (
     <div className={styles.listContainer}>
