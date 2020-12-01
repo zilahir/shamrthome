@@ -1,4 +1,5 @@
 import React, { ReactElement, useState } from "react";
+import AddCircleRoundedIcon from "@material-ui/icons/AddCircleRounded";
 
 import { apiendPoints } from "../../api/apiEndpoints";
 import { asyncRequest } from "../../utils/requests";
@@ -17,20 +18,44 @@ const KRuoka = (): ReactElement => {
       }
     });
   }
+
+  function addProduct(productName: number, productId: string) {
+    const productObect = {
+      productId,
+      productName,
+    };
+    console.debug("productObject", productObect);
+  }
   return (
-    <>
+    <div className={styles.listContainer}>
       <input
+        className={styles.input}
         type="text"
         onChange={(event) => handleSearch(event.target.value)}
       />
       <ul className={styles.list}>
         {products.map((currentProduct: any, index: number) => (
           <li key={`product-${index}`}>
-            {currentProduct.localizedName.finnish}
+            <div className={styles.productMetaContainer}>
+              <p>{currentProduct.localizedName.finnish}</p>
+            </div>
+            <div className={styles.actionBtnContainer}>
+              <button
+                type="button"
+                onClick={() =>
+                  addProduct(
+                    currentProduct.localizedName.finnish,
+                    currentProduct.id
+                  )
+                }
+              >
+                <AddCircleRoundedIcon htmlColor="#ffffff" />
+              </button>
+            </div>
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 
