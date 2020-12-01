@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { ReactElement, useState } from "react";
 import classnames from "classnames";
 
