@@ -27,6 +27,14 @@
 	flex-direction: column;
 	border: 1px solid rgba($color: $color-orange, $alpha: 0.6);
 
+	&.hidden {
+		display: none;
+		opacity: 0;
+		visibility: 0;
+		height: 0;
+		overflow: hidden;
+	}
+
 	li {
 		@include paragraph(16px, #ffffff, 0);
 		display: flex;
@@ -52,4 +60,8 @@
 			}
 		}
 	}
+}
+
+.customNameInput {
+	height: 40px;
 }
