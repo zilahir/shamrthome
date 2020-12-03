@@ -47,15 +47,19 @@ const KRuoka = (): ReactElement => {
     insertNewProductItem(productObject);
   }
 
-  function handleProductAdding(chosenProduct: any) {
+  function handleProductAdding(event: React.MouseEvent, chosenProduct: any) {
+    event.preventDefault();
+    event.stopPropagation();
     setCurrentProduct(chosenProduct);
     toggleModalOpen(true);
   }
 
-  function handleDelete(productId: number) {
+  function handleDelete(event: React.MouseEvent, productId: number) {
+    event.preventDefault();
+    event.stopPropagation();
     const deletePromise = deleteProduct(productId);
-    deletePromise.then((result: any) => {
-      console.debug("result", result);
+    deletePromise.then(() => {
+      getAllProducts().then((result: any) => setAllProducts(result));
     });
   }
 
@@ -78,7 +82,9 @@ const KRuoka = (): ReactElement => {
             <li
               key={`product-${index}`}
               role="button"
-              onClick={() => handleProductAdding(currentProduct)}
+              onClick={(event: any) =>
+                handleProductAdding(event, currentProduct)
+              }
               className={classnames(
                 isThiSProductAdded(currentProduct.id) ? styles.added : ""
               )}
@@ -88,8 +94,11 @@ const KRuoka = (): ReactElement => {
               </div>
               <div className={styles.btnContainer}>
                 <button
-                  onClick={() =>
-                    handleDelete(findCustomProductId(currentProduct.id))
+                  onClick={(event: any) =>
+                    handleDelete(
+                      event,
+                      findCustomProductId(currentProduct.id).id
+                    )
                   }
                   className={styles.removeBtn}
                   type="button"
