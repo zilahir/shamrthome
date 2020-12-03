@@ -63,29 +63,37 @@ const KRuoka = (): ReactElement => {
           ))}
         </ul>
       </div>
-      <Modal isModal={isModalOpen} setModal={toggleModalOpen}>
+      <Modal
+        isModal={isModalOpen}
+        setModal={toggleModalOpen}
+        containerClassName={styles.modal}
+      >
         <div className={styles.modalContainer}>
-          <input
-            type="text"
-            className={styles.customNameInput}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              setCustomName(event.target.value)
-            }
-            value={customName}
-          />
-          <div className={styles.btnContainer}>
-            <button
-              type="button"
-              onClick={() =>
-                addProduct(
-                  currentProduct.localizedName.finnish,
-                  currentProduct.id
-                )
+          <label>
+            Custom product name
+            <input
+              type="text"
+              className={styles.customNameInput}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setCustomName(event.target.value)
               }
-            >
-              add this product
-            </button>
-          </div>
+              value={customName}
+            />
+          </label>
+        </div>
+        <div className={styles.btnContainer}>
+          <button
+            className={styles.addBtn}
+            type="button"
+            onClick={() =>
+              addProduct(
+                currentProduct.localizedName.finnish,
+                currentProduct.id
+              )
+            }
+          >
+            Add this product
+          </button>
         </div>
       </Modal>
     </>

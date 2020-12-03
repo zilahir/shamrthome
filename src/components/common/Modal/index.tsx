@@ -1,5 +1,6 @@
 import React, { ReactChild, ReactElement } from "react";
 import { AnimatePresence } from "framer-motion";
+import classnames from "classnames";
 import ReactDOM from "react-dom";
 import CloseIcon from "@material-ui/icons/Close";
 
@@ -10,16 +11,24 @@ interface ModalProps {
   isModal: boolean;
   setModal: (value: boolean) => void;
   children: ReactChild[] | ReactChild;
+  containerClassName?: string;
 }
 
-const Modal = ({ isModal, setModal, children }: ModalProps): ReactElement => {
+const Modal = ({
+  isModal,
+  setModal,
+  children,
+  containerClassName,
+}: ModalProps): ReactElement => {
   const portalSelector = document.querySelector("#root");
   return (
     <>
       <AnimatePresence>
         {isModal && (
           <>
-            <BounceInDownDiv className={styles.modalContainer}>
+            <BounceInDownDiv
+              className={classnames(styles.modalContainer, containerClassName)}
+            >
               <button
                 className={styles.closeBtn}
                 onClick={() => setModal(false)}
