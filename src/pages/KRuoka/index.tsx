@@ -28,16 +28,18 @@ const KRuoka = (): ReactElement => {
     });
   }
 
-  function addProduct(productName: string, productId: number) {
+  function addProduct() {
+    console.debug('currentProduct', currentProduct)
     const productObject = {
-      productId,
-      productName,
+      productId: currentProduct.id,
+      productName: currentProduct.localizedName.finnish,
+      customProductName: customName,
     };
     insertNewProductItem(productObject);
   }
 
-  function handleProductAdding() {
-    setCurrentProduct(currentProduct);
+  function handleProductAdding(chosenProduct: any) {
+    setCurrentProduct(chosenProduct);
     toggleModalOpen(true);
   }
   return (
@@ -54,7 +56,7 @@ const KRuoka = (): ReactElement => {
             <li
               key={`product-${index}`}
               role="button"
-              onClick={() => handleProductAdding()}
+              onClick={() => handleProductAdding(currentProduct)}
             >
               <div className={styles.productMetaContainer}>
                 <p>{currentProduct.localizedName.finnish}</p>
@@ -86,10 +88,7 @@ const KRuoka = (): ReactElement => {
             className={styles.addBtn}
             type="button"
             onClick={() =>
-              addProduct(
-                currentProduct.localizedName.finnish,
-                currentProduct.id
-              )
+              addProduct()
             }
           >
             Add this product
