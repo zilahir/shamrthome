@@ -1,11 +1,13 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useState, useEffect } from "react";
 import classnames from "classnames";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import { apiendPoints } from "../../api/apiEndpoints";
 import { asyncRequest } from "../../utils/requests";
 import { insertNewProductItem } from "../../api/kruoka";
 import Modal from "../../components/common/Modal";
 import Loading from "../../components/common/Loading";
+import { deleteProduct, getAllProducts } from "../../api/shopping";
 
 import styles from "./KRuoka.module.scss";
 
@@ -14,7 +16,8 @@ const KRuoka = (): ReactElement => {
   const [isModalOpen, toggleModalOpen] = useState<boolean>(false);
   const [customName, setCustomName] = useState<string>("");
   const [currentProduct, setCurrentProduct] = useState<Record<string, any>>({});
-  const [isLoading, toggleLoading] = React.useState<boolean>(false);
+  const [isLoading, toggleLoading] = useState<boolean>(false);
+  const [allProducts, setAllProducts] = useState<Array<any>>([]);
 
   function handleSearch(searchQuery: string) {
     toggleLoading(true);
@@ -28,8 +31,14 @@ const KRuoka = (): ReactElement => {
     });
   }
 
+  useEffect(() => {
+    const allProductPromise = getAllProducts();
+    allProductPromise.then((result: any) => {
+      setAllProducts(result);
+    });
+  }, []);
+
   function addProduct() {
-    console.debug('currentProduct', currentProduct)
     const productObject = {
       productId: currentProduct.id,
       productName: currentProduct.localizedName.finnish,
@@ -42,6 +51,19 @@ const KRuoka = (): ReactElement => {
     setCurrentProduct(chosenProduct);
     toggleModalOpen(true);
   }
+
+  function handleDelete(productId: number) {
+    const deletePromise = deleteProduct(productId);
+    deletePromise.then((result: any) => {
+      console.debug("result", result);
+    });
+  }
+
+  const isThiSProductAdded = (productId: number) =>
+    allProducts.some((product) => product.productId === productId);
+
+  const findCustomProductId = (productId: number) =>
+    allProducts.find((product) => product.productId === productId);
   return (
     <>
       <div className={styles.listContainer}>
@@ -57,9 +79,23 @@ const KRuoka = (): ReactElement => {
               key={`product-${index}`}
               role="button"
               onClick={() => handleProductAdding(currentProduct)}
+              className={classnames(
+                isThiSProductAdded(currentProduct.id) ? styles.added : ""
+              )}
             >
               <div className={styles.productMetaContainer}>
                 <p>{currentProduct.localizedName.finnish}</p>
+              </div>
+              <div className={styles.btnContainer}>
+                <button
+                  onClick={() =>
+                    handleDelete(findCustomProductId(currentProduct.id))
+                  }
+                  className={styles.removeBtn}
+                  type="button"
+                >
+                  <DeleteIcon htmlColor="#ffffff" />
+                </button>
               </div>
             </li>
           ))}
@@ -87,9 +123,7 @@ const KRuoka = (): ReactElement => {
           <button
             className={styles.addBtn}
             type="button"
-            onClick={() =>
-              addProduct()
-            }
+            onClick={() => addProduct()}
           >
             Add this product
           </button>
