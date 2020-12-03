@@ -6,6 +6,7 @@ interface ProductItem {
   productName: string;
   productId: number;
   customProductName: string;
+  urlSlug: string;
 }
 
 export const searchForKruokaProducts = (queryString: string): Promise<any[]> =>

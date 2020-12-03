@@ -43,6 +43,7 @@ const KRuoka = (): ReactElement => {
       productId: currentProduct.id,
       productName: currentProduct.localizedName.finnish,
       customProductName: customName,
+      urlSlug: currentProduct.urlSlug,
     };
     insertNewProductItem(productObject);
   }
