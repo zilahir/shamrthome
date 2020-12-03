@@ -1,5 +1,4 @@
 import React, { ReactElement, useState } from "react";
-import AddCircleRoundedIcon from "@material-ui/icons/AddCircleRounded";
 import classnames from "classnames";
 
 import { apiendPoints } from "../../api/apiEndpoints";
@@ -36,6 +35,11 @@ const KRuoka = (): ReactElement => {
     };
     insertNewProductItem(productObject);
   }
+
+  function handleProductAdding() {
+    setCurrentProduct(currentProduct);
+    toggleModalOpen(true);
+  }
   return (
     <>
       <div className={styles.listContainer}>
@@ -47,43 +51,41 @@ const KRuoka = (): ReactElement => {
         <Loading isLoading={isLoading} />
         <ul className={classnames(styles.list, isLoading ? styles.hidden : "")}>
           {products.map((currentProduct: any, index: number) => (
-            <li key={`product-${index}`}>
+            <li
+              key={`product-${index}`}
+              role="button"
+              onClick={() => handleProductAdding()}
+            >
               <div className={styles.productMetaContainer}>
                 <p>{currentProduct.localizedName.finnish}</p>
-              </div>
-              <div className={styles.actionBtnContainer}>
-                <button
-                  type="button"
-                  onClick={() => setCurrentProduct(currentProduct)}
-                >
-                  <AddCircleRoundedIcon htmlColor="#ffffff" />
-                </button>
               </div>
             </li>
           ))}
         </ul>
       </div>
       <Modal isModal={isModalOpen} setModal={toggleModalOpen}>
-        <input
-          type="text"
-          className={styles.customNameInput}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-            setCustomName(event.target.value)
-          }
-          value={customName}
-        />
-        <div className={styles.btnContainer}>
-          <button
-            type="button"
-            onClick={() =>
-              addProduct(
-                currentProduct.localizedName.finnish,
-                currentProduct.id
-              )
+        <div className={styles.modalContainer}>
+          <input
+            type="text"
+            className={styles.customNameInput}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              setCustomName(event.target.value)
             }
-          >
-            add this product
-          </button>
+            value={customName}
+          />
+          <div className={styles.btnContainer}>
+            <button
+              type="button"
+              onClick={() =>
+                addProduct(
+                  currentProduct.localizedName.finnish,
+                  currentProduct.id
+                )
+              }
+            >
+              add this product
+            </button>
+          </div>
         </div>
       </Modal>
     </>

@@ -3,7 +3,7 @@
 
 .listContainer {
 	max-width: 900px;
-	margin: 0 auto;
+	margin: 60px auto;
 
 	.input {
 		@include paragraph(26px, $dark-1, 0);
@@ -62,6 +62,11 @@
 	}
 }
 
-.customNameInput {
-	height: 40px;
+.modalContainer {
+	display: flex;
+	flex-direction: column;
+
+	.customNameInput {
+		height: 40px;
+	}
 }
