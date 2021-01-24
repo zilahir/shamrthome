@@ -1,8 +1,10 @@
 import axios, { AxiosResponse } from "axios";
 
+import { MyKRUokaProducts } from "../types";
+
 import { apiendPoints } from "./apiEndpoints";
 
-export const getAllProducts = (): Promise<any[]> =>
+export const getAllProducts = (): Promise<MyKRUokaProducts[]> =>
   new Promise((resolve) => {
     axios
       .get(apiendPoints.shopping.getAllProducts)

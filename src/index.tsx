@@ -9,6 +9,7 @@ import { persistor, store } from "./store/configureStore";
 import Root from "./components/Root";
 import KRuoka from "./pages/KRuoka";
 import { Notification } from "./components/common/Notification";
+import MyKRukoa from "./pages/KRuoka/pages/MyKRuoka";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.render(
           <Switch>
             <Route exact path="/" component={Root} />
             <Route exact path="/kruoka" component={KRuoka} />
+            <Route exact path="/kruoka/my" component={MyKRukoa} />
           </Switch>
           <Notification />
         </Router>
