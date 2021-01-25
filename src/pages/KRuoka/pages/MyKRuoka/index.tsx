@@ -15,28 +15,36 @@ const MyKRukoa = (): ReactElement => {
     });
   }, []);
   return (
-    <ul className={classnames(styles.list)}>
-      {myProducts.map((currentProduct: MyKRUokaProducts, index: number) => (
-        <li
-          key={`product-${index}`}
-          role="button"
-          onClick={() => console.debug("hello")}
-        >
-          <div className={styles.productMetaContainer}>
-            <p>{currentProduct.productName}</p>
-          </div>
-          <div className={styles.btnContainer}>
-            <button
+    <div className={styles.rootContainer}>
+      <div>
+        <h1>My KRuoka products</h1>
+        <ul className={classnames(styles.list)}>
+          {myProducts.map((currentProduct: MyKRUokaProducts, index: number) => (
+            <li
+              key={`product-${index}`}
+              role="button"
               onClick={() => console.debug("hello")}
-              className={styles.removeBtn}
-              type="button"
             >
-              <DeleteIcon htmlColor="#ffffff" />
-            </button>
-          </div>
-        </li>
-      ))}
-    </ul>
+              <div className={styles.productMetaContainer}>
+                <p>{currentProduct.productName}</p>
+              </div>
+              <div className={styles.btnContainer}>
+                <button
+                  onClick={() => console.debug("hello")}
+                  className={styles.removeBtn}
+                  type="button"
+                >
+                  <DeleteIcon htmlColor="#ffffff" />
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h1>last open shopping list</h1>
+      </div>
+    </div>
   );
 };
 
