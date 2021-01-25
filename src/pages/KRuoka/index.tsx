@@ -8,11 +8,12 @@ import { insertNewProductItem } from "../../api/kruoka";
 import Modal from "../../components/common/Modal";
 import Loading from "../../components/common/Loading";
 import { deleteProduct, getAllProducts } from "../../api/shopping";
+import { KRuokaSearch } from "../../types/kRuoka";
 
 import styles from "./KRuoka.module.scss";
 
 const KRuoka = (): ReactElement => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Array<KRuokaSearch>>([]);
   const [isModalOpen, toggleModalOpen] = useState<boolean>(false);
   const [customName, setCustomName] = useState<string>("");
   const [currentProduct, setCurrentProduct] = useState<Record<string, any>>({});
@@ -23,10 +24,10 @@ const KRuoka = (): ReactElement => {
     toggleLoading(true);
     asyncRequest(apiendPoints.kruoka.findProduct, {
       itemToSearch: searchQuery.toLowerCase(),
-    }).then((result: any) => {
+    }).then((result: Array<KRuokaSearch>) => {
       toggleLoading(false);
-      if (Array.isArray(result.result)) {
-        setProducts(result.result);
+      if (Array.isArray(result)) {
+        setProducts(result);
       }
     });
   }
@@ -64,10 +65,10 @@ const KRuoka = (): ReactElement => {
     });
   }
 
-  const isThiSProductAdded = (productId: number) =>
+  const isThiSProductAdded = (productId: string) =>
     allProducts.some((product) => product.productId === productId);
 
-  const findCustomProductId = (productId: number) =>
+  const findCustomProductId = (productId: string) =>
     allProducts.find((product) => product.productId === productId);
   return (
     <>
@@ -79,7 +80,7 @@ const KRuoka = (): ReactElement => {
         />
         <Loading isLoading={isLoading} />
         <ul className={classnames(styles.list, isLoading ? styles.hidden : "")}>
-          {products.map((currentProduct: any, index: number) => (
+          {products.map((currentProduct: KRuokaSearch, index: number) => (
             <li
               key={`product-${index}`}
               role="button"

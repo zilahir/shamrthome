@@ -4,3 +4,10 @@ export interface MyKRUokaProducts {
   customProductName: string;
   urlSlug: string;
 }
+
+export interface ShoppingList {
+  isFullFilled: boolean;
+  createdAt: string;
+  id: string;
+  items: MyKRUokaProducts[];
+}

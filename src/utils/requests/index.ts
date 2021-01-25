@@ -13,7 +13,7 @@ export const makeRequestCreator = (): any => {
         cancelToken: source.token,
         data: params,
       })
-        .then((response) => resolve(response.data))
+        .then((response) => resolve(response.data.result))
         .catch((error) => reject(error));
     });
   };
