@@ -2,16 +2,21 @@ import React, { ReactElement, useEffect, useState } from "react";
 import classnames from "classnames";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-import { getAllProducts } from "../../../../api/shopping";
+import { getAllProducts, getLastShoppingList } from "../../../../api/shopping";
 import styles from "../../KRuoka.module.scss";
-import { MyKRUokaProducts } from "../../../../types";
+import { MyKRUokaProducts, ShoppingList } from "../../../../types";
 
 const MyKRukoa = (): ReactElement => {
   const [myProducts, setMyProducts] = useState<Array<MyKRUokaProducts>>([]);
+  const [lastShoppingList, setLastShoppingList] = useState<ShoppingList>();
   useEffect(() => {
     const getAllMyProductsPromise = getAllProducts();
+    const getLastShoppingListPromise = getLastShoppingList();
     getAllMyProductsPromise.then((productsResult: Array<MyKRUokaProducts>) => {
       setMyProducts(productsResult);
+    });
+    getLastShoppingListPromise.then((shoppingListResult: ShoppingList) => {
+      setLastShoppingList(shoppingListResult);
     });
   }, []);
   return (
@@ -43,6 +48,15 @@ const MyKRukoa = (): ReactElement => {
       </div>
       <div>
         <h1>last open shopping list</h1>
+        <ul className={styles.list}>
+          {lastShoppingList?.items.map(
+            (currentShoppingItem: MyKRUokaProducts) => (
+              <li key={currentShoppingItem.productId}>
+                {currentShoppingItem.productName}
+              </li>
+            )
+          )}
+        </ul>
       </div>
     </div>
   );
