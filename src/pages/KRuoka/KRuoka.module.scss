@@ -135,6 +135,28 @@
   flex-direction: row;
   padding: 100px;
 
+  .col {
+    margin: 0 20px;
+
+    .meta {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+
+      span {
+        @include paragraph(14px, #ffffff, 0);
+        margin-left: 10px;
+
+        .count {
+          padding: 4px 8px;
+          background-color: rgba($color-orange, 1);
+          border-radius: 50%;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
   h1 {
     @include paragraph(22px, #ffffff, 0);
     margin: 20px 0;

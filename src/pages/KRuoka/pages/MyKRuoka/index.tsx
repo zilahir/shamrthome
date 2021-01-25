@@ -1,6 +1,7 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import classnames from "classnames";
 import DeleteIcon from "@material-ui/icons/Delete";
+import EventIcon from "@material-ui/icons/Event";
 
 import { getAllProducts, getLastShoppingList } from "../../../../api/shopping";
 import styles from "../../KRuoka.module.scss";
@@ -21,7 +22,7 @@ const MyKRukoa = (): ReactElement => {
   }, []);
   return (
     <div className={styles.rootContainer}>
-      <div>
+      <div className={styles.col}>
         <h1>My KRuoka products</h1>
         <ul className={classnames(styles.list)}>
           {myProducts.map((currentProduct: MyKRUokaProducts, index: number) => (
@@ -46,8 +47,18 @@ const MyKRukoa = (): ReactElement => {
           ))}
         </ul>
       </div>
-      <div>
+      <div className={styles.col}>
         <h1>last open shopping list</h1>
+        <div className={styles.meta}>
+          <EventIcon htmlColor="#ffffff" />
+          <span>
+            {lastShoppingList?.createdAt}
+            <span className={styles.count}>
+              {lastShoppingList?.items.length}
+            </span>{" "}
+            products
+          </span>
+        </div>
         <ul className={styles.list}>
           {lastShoppingList?.items.map(
             (currentShoppingItem: MyKRUokaProducts) => (
