@@ -143,6 +143,17 @@
       align-items: center;
       margin: 20px 0;
 
+      .price {
+        @include paragraph(26px, #ffffff, 0);
+        margin-right: 5px;
+        display: flex;
+        align-items: center;
+
+        small {
+          margin-right: 10px;
+        }
+      }
+
       span {
         @include paragraph(14px, #ffffff, 0);
         margin-left: 10px;

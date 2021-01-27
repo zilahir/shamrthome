@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 import classnames from "classnames";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EventIcon from "@material-ui/icons/Event";
+import EuroIcon from "@material-ui/icons/Euro";
 
 import { getAllProducts, getLastShoppingList } from "../../../../api/shopping";
 import styles from "../../KRuoka.module.scss";
@@ -9,7 +10,13 @@ import { MyKRUokaProducts, ShoppingList } from "../../../../types";
 
 const MyKRukoa = (): ReactElement => {
   const [myProducts, setMyProducts] = useState<Array<MyKRUokaProducts>>([]);
-  const [lastShoppingList, setLastShoppingList] = useState<ShoppingList>();
+  const [lastShoppingList, setLastShoppingList] = useState<ShoppingList>({
+    items: [],
+    isFullFilled: false,
+    createdAt: "",
+    id: undefined,
+  });
+
   useEffect(() => {
     const getAllMyProductsPromise = getAllProducts();
     const getLastShoppingListPromise = getLastShoppingList();
@@ -20,6 +27,10 @@ const MyKRukoa = (): ReactElement => {
       setLastShoppingList(shoppingListResult);
     });
   }, []);
+
+  const getSumPrice = (items: MyKRUokaProducts[]): number =>
+    items.reduce((n, { price }) => n + Number.parseInt(price.value, 10), 0);
+
   return (
     <div className={styles.rootContainer}>
       <div className={styles.col}>
@@ -59,6 +70,15 @@ const MyKRukoa = (): ReactElement => {
             products
           </span>
         </div>
+        {lastShoppingList?.items.length > 0 && (
+          <div className={styles.meta}>
+            <p className={styles.price}>
+              <small>SUM:</small>
+              {getSumPrice(lastShoppingList?.items)}
+            </p>
+            <EuroIcon htmlColor="#ffffff" />
+          </div>
+        )}
         <ul className={styles.list}>
           {lastShoppingList?.items.map(
             (currentShoppingItem: MyKRUokaProducts) => (
